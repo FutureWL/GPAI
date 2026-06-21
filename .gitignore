@@ -1,0 +1,117 @@
+# =============================================================================
+# GPAI 股票平台 — .gitignore
+# 反映多语言 monorepo 规划:Node/TS、Python、Rust、Go 共存
+# =============================================================================
+
+# ----- Node / TypeScript -----
+node_modules/
+.pnpm-store/
+.pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+npm-debug.log*
+
+# Next.js
+.next/
+out/
+build/
+.next-standalone/
+
+# Turborepo
+.turbo/
+turbo-cache/
+
+# Vite / Webpack / esbuild
+dist/
+.vite/
+*.tsbuildinfo
+
+# Coverage
+coverage/
+*.lcov
+.nyc_output/
+
+# ----- Python -----
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+venv/
+env/
+ENV/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+*.egg-info/
+dist/
+build/
+
+# ----- Rust -----
+target/
+**/*.rs.bk
+Cargo.lock.bak
+
+# ----- Go -----
+vendor/
+*.exe
+*.dll
+*.so
+*.dylib
+
+# ----- 生成代码(不进 git)-----
+# 见 spec §5.5:TypeScript 提交到 git,其他语言构建时生成
+gen/python/
+gen/go/
+gen/rust/
+services/core/crates/**/proto/
+
+# ----- 密钥 / 环境 -----
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+*.p12
+secrets/
+
+# ----- IDE / 编辑器 -----
+.vscode/
+!.vscode/settings.json.example
+!.vscode/extensions.json
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# ----- 日志 / 临时 -----
+*.log
+logs/
+tmp/
+temp/
+.cache/
+
+# ----- 数据库 / 数据 -----
+*.sqlite
+*.sqlite3
+*.db
+data/
+
+# ----- Terraform / IaC -----
+.terraform/
+*.tfstate
+*.tfstate.*
+.terraform.lock.hcl.bak
+
+# ----- 测试产物 -----
+playwright-report/
+test-results/
+playwright/.cache/
+e2e/screenshots/
+e2e/videos/
+e2e/traces/
