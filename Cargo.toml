@@ -5,6 +5,7 @@ members = [
   "services/core/crates/core-common",
   "services/core/crates/core-market",
   "services/core/crates/core-portfolio",
+  "services/core/crates/proto-gen",
 ]
 
 [workspace.package]

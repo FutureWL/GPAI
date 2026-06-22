@@ -6,17 +6,29 @@ edition.workspace = true
 [lib]
 path = "src/lib.rs"
 
+[[bin]]
+name = "market-server"
+path = "src/bin/market-server.rs"
+
 [dependencies]
 gpai-core-common = { path = "../core-common" }
+gpai-proto-gen = { path = "../proto-gen" }
 async-trait.workspace = true
 tokio.workspace = true
 thiserror.workspace = true
 tracing.workspace = true
+tracing-subscriber.workspace = true
 chrono.workspace = true
 serde.workspace = true
 serde_json.workspace = true
 reqwest = { workspace = true }
+sqlx.workspace = true
+tonic.workspace = true
+prost-types.workspace = true
+tokio-stream = "0.1"
 
 [dev-dependencies]
 wiremock = "0.6"
 tokio = { workspace = true, features = ["macros", "rt-multi-thread"] }
+testcontainers = "0.22"
+testcontainers-modules = { version = "0.10", features = ["postgres"] }
