@@ -37,9 +37,10 @@ jobs:
         with:
           setup_only: true
       - name: Install protoc for tonic-build
+        # ubuntu-latest runner 的 apt 需要 sudo 才能写 /var/lib/apt/lists/
         run: |
-          apt-get update
-          apt-get install -y protobuf-compiler
+          sudo apt-get update
+          sudo apt-get install -y protobuf-compiler
       - name: buf lint proto contract
         run: buf lint proto/
       - run: psql $DATABASE_URL -f db/migrations/0001_init.sql

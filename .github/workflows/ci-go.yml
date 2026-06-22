@@ -22,12 +22,11 @@ jobs:
         with:
           setup_only: true
       - name: Install protoc-gen-go + protoc-gen-go-grpc
+        # setup-go@v5 把 GOPATH 放到 $HOME/go 而不是 /go(/go 需要 root),直接用 go env 取。
         run: |
           go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
           go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
-          echo "$GOPATH/bin" >> "$GITHUB_PATH"
-        env:
-          GOPATH: /go
+          echo "$(go env GOPATH)/bin" >> "$GITHUB_PATH"
       - run: buf generate proto/ --template proto/buf.gen.go.yaml
       - run: cd apps/gateway && go mod download
       - run: cd apps/gateway && go test ./... -coverprofile=coverage.out

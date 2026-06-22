@@ -26,9 +26,10 @@ jobs:
         with:
           setup_only: true
       - name: Cross-language consistency (TypeScript only)
-        # 跨语言一致性只检查 TS 一侧:使用专门的 TS-only buf config(protobuf.buf.gen.ts.yaml)。
+        # 跨语言一致性只检查 TS 一侧:使用专门的 TS-only buf config(proto/buf.gen.ts.yaml)。
+        # buf v2 的 --template 路径相对于输入目录,所以这里不写 proto/ 前缀。
         # Go / Rust 各自 CI 已覆盖。
         run: |
           npm install -g @bufbuild/protoc-gen-es @bufbuild/protoc-gen-connect-es ts-proto
-          buf generate proto/ --template proto/buf.gen.ts.yaml
+          buf generate proto/ --template buf.gen.ts.yaml
           bash scripts/check-proto-consistency.sh

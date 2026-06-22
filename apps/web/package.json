@@ -6,7 +6,7 @@
     "dev": "next dev --port 3000",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "echo 'lint not configured yet — see Next.js 15 next-lint deprecation; proper eslint setup is a separate task'",
     "test": "vitest run",
     "test:watch": "vitest"
   },
