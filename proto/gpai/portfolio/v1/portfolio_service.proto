@@ -1,6 +1,7 @@
 syntax = "proto3";
 
 package gpai.portfolio.v1;
+option go_package = "github.com/FutureWL/GPAI/gen/go/gpai/portfolio/v1";
 
 import "gpai/portfolio/v1/position.proto";
 import "gpai/portfolio/v1/transaction.proto";

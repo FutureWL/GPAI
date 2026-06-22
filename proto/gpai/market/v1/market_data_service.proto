@@ -1,6 +1,7 @@
 syntax = "proto3";
 
 package gpai.market.v1;
+option go_package = "github.com/FutureWL/GPAI/gen/go/gpai/market/v1";
 
 import "gpai/common/v1/types.proto";
 import "gpai/common/v1/pagination.proto";

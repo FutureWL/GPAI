@@ -1,6 +1,7 @@
 syntax = "proto3";
 
 package gpai.ingestion.v1;
+option go_package = "github.com/FutureWL/GPAI/gen/go/gpai/ingestion/v1";
 
 import "gpai/ingestion/v1/job.proto";
 

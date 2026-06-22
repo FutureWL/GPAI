@@ -1,6 +1,7 @@
 syntax = "proto3";
 
 package gpai.portfolio.v1;
+option go_package = "github.com/FutureWL/GPAI/gen/go/gpai/portfolio/v1";
 
 import "google/protobuf/timestamp.proto";
 import "gpai/common/v1/types.proto";
