@@ -2,16 +2,16 @@
 //!
 //! 默认行为:
 //! 1. 用 `gpai_core_market::source::YahooSource::new()` 拉行情
-//! 2. 通过 `gpai_core_common::ModuleRegistry` 拿 market 模块地址
+//! 2. 通过 `MARKET_GRPC_ADDR` 环境变量拿 market gRPC 地址
 //! 3. 每 30s 拉一次并通过 gRPC 推送给 market
 //!
 //! 环境变量:
 //! * `INGESTOR_POLL_SECS` — 覆盖默认 30s
 //! * `INGESTOR_INSTRUMENTS` — 逗号分隔的标的 ID 列表
+//! * `MARKET_GRPC_ADDR` — market-server 的 gRPC 地址(默认 `http://127.0.0.1:50051`)
 
 use std::time::Duration;
 
-use gpai_core_common::ModuleRegistry;
 use gpai_core_market::source::yahoo::YahooSource;
 use gpai_core_market::DataSource;
 use gpai_proto_gen::gpai::market::v1::market_data_service_client::MarketDataServiceClient;
@@ -40,15 +40,13 @@ async fn main() -> anyhow::Result<()> {
     // 2. 数据源
     let source: Box<dyn DataSource> = Box::new(YahooSource::new());
 
-    // 3. gRPC client — 走模块注册中心
-    let registry = ModuleRegistry::new();
-    let market_addr = registry
-        .get("market")
-        .ok_or_else(|| anyhow::anyhow!("market module not registered"))?;
-    let url = format!("http://{}", market_addr);
-    let endpoint = Channel::from_shared(url)?
+    // 3. gRPC client — 直接读 MARKET_GRPC_ADDR,跨进程也能连
+    let market_url = std::env::var("MARKET_GRPC_ADDR")
+        .unwrap_or_else(|_| "http://127.0.0.1:50051".into());
+    let endpoint = Channel::from_shared(market_url.clone())?
         .connect_timeout(Duration::from_secs(5));
     let client = MarketDataServiceClient::new(endpoint.connect_lazy());
+    tracing::info!(addr = %market_url, "ingestor -> market gRPC client (lazy)");
 
     // 4. 跑循环
     let shutdown = async {
