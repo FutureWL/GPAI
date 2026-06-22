@@ -27,7 +27,7 @@ jobs:
           go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
           go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
           echo "$(go env GOPATH)/bin" >> "$GITHUB_PATH"
-      - run: buf generate proto/ --template proto/buf.gen.go.yaml
+      - run: buf generate proto/ --template buf.gen.go.yaml
       - run: cd apps/gateway && go mod download
       - run: cd apps/gateway && go test ./... -coverprofile=coverage.out
       - run: cd apps/gateway && go vet ./...

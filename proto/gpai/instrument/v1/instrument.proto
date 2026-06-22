@@ -1,5 +1,6 @@
 syntax = "proto3";
 
+// GPAI 多市场证券主数据(A 股 / 港股 / 美股)。
 package gpai.instrument.v1;
 
 import "google/protobuf/timestamp.proto";
