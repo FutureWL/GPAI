@@ -1,0 +1,38 @@
+name: gpai-dev
+
+services:
+  postgres:
+    image: timescale/timescaledb:latest-pg16
+    container_name: gpai-postgres
+    environment:
+      POSTGRES_USER: gpai
+      POSTGRES_PASSWORD: gpai
+      POSTGRES_DB: gpai
+    ports:
+      # Host-side ports chosen to avoid clashes with a system Postgres
+      # or Redis that may already be running on 5432 / 6379. Update
+      # .env.dev.example if you change these.
+      - "55432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U gpai -d gpai -h 127.0.0.1 -p 5432"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+
+  redis:
+    image: redis:7-alpine
+    container_name: gpai-redis
+    ports:
+      - "6390:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+      start_period: 5s
+
+volumes:
+  pgdata:
