@@ -1,0 +1,7 @@
+{
+  "name": "@gpai/proto-ts",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Generated TypeScript proto bindings (connect-es, es, ts-proto)",
+  "files": ["connect-es", "es", "ts-proto", "google"]
+}
