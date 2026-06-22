@@ -2,22 +2,15 @@
 // @generated from file gpai/common/v1/errors.proto (package gpai.common.v1, syntax proto3)
 /* eslint-disable */
 
-import type {
-  GenEnum,
-  GenFile,
-  GenMessage,
-} from "@bufbuild/protobuf/codegenv2";
+import type { GenEnum, GenFile, GenMessage } from "@bufbuild/protobuf/codegenv2";
 import { enumDesc, fileDesc, messageDesc } from "@bufbuild/protobuf/codegenv2";
 import type { Message } from "@bufbuild/protobuf";
 
 /**
  * Describes the file gpai/common/v1/errors.proto.
  */
-export const file_gpai_common_v1_errors: GenFile =
-  /*@__PURE__*/
-  fileDesc(
-    "ChtncGFpL2NvbW1vbi92MS9lcnJvcnMucHJvdG8SDmdwYWkuY29tbW9uLnYxIpsDCgVFcnJvchIoCgRjb2RlGAEgASgOMhouZ3BhaS5jb21tb24udjEuRXJyb3IuQ29kZRIPCgdtZXNzYWdlGAIgASgJEjMKB2RldGFpbHMYAyADKAsyIi5ncGFpLmNvbW1vbi52MS5FcnJvci5EZXRhaWxzRW50cnkSEgoKcmVxdWVzdF9pZBgEIAEoCRouCgxEZXRhaWxzRW50cnkSCwoDa2V5GAEgASgJEg0KBXZhbHVlGAIgASgJOgI4ASLdAQoEQ29kZRIUChBDT0RFX1VOU1BFQ0lGSUVEEAASEgoOQ09ERV9OT1RfRk9VTkQQARIZChVDT0RFX0lOVkFMSURfQVJHVU1FTlQQAhIYChRDT0RFX1VOQVVUSEVOVElDQVRFRBADEhoKFkNPREVfUEVSTUlTU0lPTl9ERU5JRUQQBBIVChFDT0RFX1JBVEVfTElNSVRFRBAFEh0KGUNPREVfVVBTVFJFQU1fVU5BVkFJTEFCTEUQBhIRCg1DT0RFX0lOVEVSTkFMEAcSEQoNQ09ERV9DT05GTElDVBAIYgZwcm90bzM",
-  );
+export const file_gpai_common_v1_errors: GenFile = /*@__PURE__*/
+  fileDesc("ChtncGFpL2NvbW1vbi92MS9lcnJvcnMucHJvdG8SDmdwYWkuY29tbW9uLnYxIpsDCgVFcnJvchIoCgRjb2RlGAEgASgOMhouZ3BhaS5jb21tb24udjEuRXJyb3IuQ29kZRIPCgdtZXNzYWdlGAIgASgJEjMKB2RldGFpbHMYAyADKAsyIi5ncGFpLmNvbW1vbi52MS5FcnJvci5EZXRhaWxzRW50cnkSEgoKcmVxdWVzdF9pZBgEIAEoCRouCgxEZXRhaWxzRW50cnkSCwoDa2V5GAEgASgJEg0KBXZhbHVlGAIgASgJOgI4ASLdAQoEQ29kZRIUChBDT0RFX1VOU1BFQ0lGSUVEEAASEgoOQ09ERV9OT1RfRk9VTkQQARIZChVDT0RFX0lOVkFMSURfQVJHVU1FTlQQAhIYChRDT0RFX1VOQVVUSEVOVElDQVRFRBADEhoKFkNPREVfUEVSTUlTU0lPTl9ERU5JRUQQBBIVChFDT0RFX1JBVEVfTElNSVRFRBAFEh0KGUNPREVfVVBTVFJFQU1fVU5BVkFJTEFCTEUQBhIRCg1DT0RFX0lOVEVSTkFMEAcSEQoNQ09ERV9DT05GTElDVBAIQjBaLmdpdGh1Yi5jb20vRnV0dXJlV0wvR1BBSS9nZW4vZ28vZ3BhaS9jb21tb24vdjFiBnByb3RvMw");
 
 /**
  * @generated from message gpai.common.v1.Error
@@ -48,8 +41,7 @@ export type Error = Message<"gpai.common.v1.Error"> & {
  * Describes the message gpai.common.v1.Error.
  * Use `create(ErrorSchema)` to create a new message.
  */
-export const ErrorSchema: GenMessage<Error> =
-  /*@__PURE__*/
+export const ErrorSchema: GenMessage<Error> = /*@__PURE__*/
   messageDesc(file_gpai_common_v1_errors, 0);
 
 /**
@@ -105,6 +97,6 @@ export enum Error_Code {
 /**
  * Describes the enum gpai.common.v1.Error.Code.
  */
-export const Error_CodeSchema: GenEnum<Error_Code> =
-  /*@__PURE__*/
+export const Error_CodeSchema: GenEnum<Error_Code> = /*@__PURE__*/
   enumDesc(file_gpai_common_v1_errors, 0, 0);
+

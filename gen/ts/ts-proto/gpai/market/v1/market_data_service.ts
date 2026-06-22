@@ -44,10 +44,7 @@ function createBaseGetQuoteRequest(): GetQuoteRequest {
 }
 
 export const GetQuoteRequest: MessageFns<GetQuoteRequest> = {
-  encode(
-    message: GetQuoteRequest,
-    writer: BinaryWriter = new BinaryWriter(),
-  ): BinaryWriter {
+  encode(message: GetQuoteRequest, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
     if (message.instrumentId !== "") {
       writer.uint32(10).string(message.instrumentId);
     }
@@ -55,8 +52,7 @@ export const GetQuoteRequest: MessageFns<GetQuoteRequest> = {
   },
 
   decode(input: BinaryReader | Uint8Array, length?: number): GetQuoteRequest {
-    const reader =
-      input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseGetQuoteRequest();
     while (reader.pos < end) {
@@ -84,8 +80,8 @@ export const GetQuoteRequest: MessageFns<GetQuoteRequest> = {
       instrumentId: isSet(object.instrumentId)
         ? globalThis.String(object.instrumentId)
         : isSet(object.instrument_id)
-          ? globalThis.String(object.instrument_id)
-          : "",
+        ? globalThis.String(object.instrument_id)
+        : "",
     };
   },
 
@@ -112,10 +108,7 @@ function createBaseGetQuoteResponse(): GetQuoteResponse {
 }
 
 export const GetQuoteResponse: MessageFns<GetQuoteResponse> = {
-  encode(
-    message: GetQuoteResponse,
-    writer: BinaryWriter = new BinaryWriter(),
-  ): BinaryWriter {
+  encode(message: GetQuoteResponse, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
     if (message.quote !== undefined) {
       Quote.encode(message.quote, writer.uint32(10).fork()).join();
     }
@@ -123,8 +116,7 @@ export const GetQuoteResponse: MessageFns<GetQuoteResponse> = {
   },
 
   decode(input: BinaryReader | Uint8Array, length?: number): GetQuoteResponse {
-    const reader =
-      input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseGetQuoteResponse();
     while (reader.pos < end) {
@@ -148,9 +140,7 @@ export const GetQuoteResponse: MessageFns<GetQuoteResponse> = {
   },
 
   fromJSON(object: any): GetQuoteResponse {
-    return {
-      quote: isSet(object.quote) ? Quote.fromJSON(object.quote) : undefined,
-    };
+    return { quote: isSet(object.quote) ? Quote.fromJSON(object.quote) : undefined };
   },
 
   toJSON(message: GetQuoteResponse): unknown {
@@ -166,10 +156,7 @@ export const GetQuoteResponse: MessageFns<GetQuoteResponse> = {
   },
   fromPartial(object: DeepPartial<GetQuoteResponse>): GetQuoteResponse {
     const message = createBaseGetQuoteResponse();
-    message.quote =
-      object.quote !== undefined && object.quote !== null
-        ? Quote.fromPartial(object.quote)
-        : undefined;
+    message.quote = (object.quote !== undefined && object.quote !== null) ? Quote.fromPartial(object.quote) : undefined;
     return message;
   },
 };
@@ -179,22 +166,15 @@ function createBaseUpsertLatestQuoteRequest(): UpsertLatestQuoteRequest {
 }
 
 export const UpsertLatestQuoteRequest: MessageFns<UpsertLatestQuoteRequest> = {
-  encode(
-    message: UpsertLatestQuoteRequest,
-    writer: BinaryWriter = new BinaryWriter(),
-  ): BinaryWriter {
+  encode(message: UpsertLatestQuoteRequest, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
     if (message.quote !== undefined) {
       Quote.encode(message.quote, writer.uint32(10).fork()).join();
     }
     return writer;
   },
 
-  decode(
-    input: BinaryReader | Uint8Array,
-    length?: number,
-  ): UpsertLatestQuoteRequest {
-    const reader =
-      input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): UpsertLatestQuoteRequest {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseUpsertLatestQuoteRequest();
     while (reader.pos < end) {
@@ -218,9 +198,7 @@ export const UpsertLatestQuoteRequest: MessageFns<UpsertLatestQuoteRequest> = {
   },
 
   fromJSON(object: any): UpsertLatestQuoteRequest {
-    return {
-      quote: isSet(object.quote) ? Quote.fromJSON(object.quote) : undefined,
-    };
+    return { quote: isSet(object.quote) ? Quote.fromJSON(object.quote) : undefined };
   },
 
   toJSON(message: UpsertLatestQuoteRequest): unknown {
@@ -231,19 +209,12 @@ export const UpsertLatestQuoteRequest: MessageFns<UpsertLatestQuoteRequest> = {
     return obj;
   },
 
-  create(
-    base?: DeepPartial<UpsertLatestQuoteRequest>,
-  ): UpsertLatestQuoteRequest {
+  create(base?: DeepPartial<UpsertLatestQuoteRequest>): UpsertLatestQuoteRequest {
     return UpsertLatestQuoteRequest.fromPartial(base ?? {});
   },
-  fromPartial(
-    object: DeepPartial<UpsertLatestQuoteRequest>,
-  ): UpsertLatestQuoteRequest {
+  fromPartial(object: DeepPartial<UpsertLatestQuoteRequest>): UpsertLatestQuoteRequest {
     const message = createBaseUpsertLatestQuoteRequest();
-    message.quote =
-      object.quote !== undefined && object.quote !== null
-        ? Quote.fromPartial(object.quote)
-        : undefined;
+    message.quote = (object.quote !== undefined && object.quote !== null) ? Quote.fromPartial(object.quote) : undefined;
     return message;
   },
 };
@@ -252,85 +223,66 @@ function createBaseUpsertLatestQuoteResponse(): UpsertLatestQuoteResponse {
   return { accepted: false };
 }
 
-export const UpsertLatestQuoteResponse: MessageFns<UpsertLatestQuoteResponse> =
-  {
-    encode(
-      message: UpsertLatestQuoteResponse,
-      writer: BinaryWriter = new BinaryWriter(),
-    ): BinaryWriter {
-      if (message.accepted !== false) {
-        writer.uint32(8).bool(message.accepted);
-      }
-      return writer;
-    },
+export const UpsertLatestQuoteResponse: MessageFns<UpsertLatestQuoteResponse> = {
+  encode(message: UpsertLatestQuoteResponse, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+    if (message.accepted !== false) {
+      writer.uint32(8).bool(message.accepted);
+    }
+    return writer;
+  },
 
-    decode(
-      input: BinaryReader | Uint8Array,
-      length?: number,
-    ): UpsertLatestQuoteResponse {
-      const reader =
-        input instanceof BinaryReader ? input : new BinaryReader(input);
-      const end = length === undefined ? reader.len : reader.pos + length;
-      const message = createBaseUpsertLatestQuoteResponse();
-      while (reader.pos < end) {
-        const tag = reader.uint32();
-        switch (tag >>> 3) {
-          case 1: {
-            if (tag !== 8) {
-              break;
-            }
-
-            message.accepted = reader.bool();
-            continue;
+  decode(input: BinaryReader | Uint8Array, length?: number): UpsertLatestQuoteResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseUpsertLatestQuoteResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1: {
+          if (tag !== 8) {
+            break;
           }
+
+          message.accepted = reader.bool();
+          continue;
         }
-        if ((tag & 7) === 4 || tag === 0) {
-          break;
-        }
-        reader.skip(tag & 7);
       }
-      return message;
-    },
-
-    fromJSON(object: any): UpsertLatestQuoteResponse {
-      return {
-        accepted: isSet(object.accepted)
-          ? globalThis.Boolean(object.accepted)
-          : false,
-      };
-    },
-
-    toJSON(message: UpsertLatestQuoteResponse): unknown {
-      const obj: any = {};
-      if (message.accepted !== false) {
-        obj.accepted = message.accepted;
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
       }
-      return obj;
-    },
+      reader.skip(tag & 7);
+    }
+    return message;
+  },
 
-    create(
-      base?: DeepPartial<UpsertLatestQuoteResponse>,
-    ): UpsertLatestQuoteResponse {
-      return UpsertLatestQuoteResponse.fromPartial(base ?? {});
-    },
-    fromPartial(
-      object: DeepPartial<UpsertLatestQuoteResponse>,
-    ): UpsertLatestQuoteResponse {
-      const message = createBaseUpsertLatestQuoteResponse();
-      message.accepted = object.accepted ?? false;
-      return message;
-    },
-  };
+  fromJSON(object: any): UpsertLatestQuoteResponse {
+    return { accepted: isSet(object.accepted) ? globalThis.Boolean(object.accepted) : false };
+  },
+
+  toJSON(message: UpsertLatestQuoteResponse): unknown {
+    const obj: any = {};
+    if (message.accepted !== false) {
+      obj.accepted = message.accepted;
+    }
+    return obj;
+  },
+
+  create(base?: DeepPartial<UpsertLatestQuoteResponse>): UpsertLatestQuoteResponse {
+    return UpsertLatestQuoteResponse.fromPartial(base ?? {});
+  },
+  fromPartial(object: DeepPartial<UpsertLatestQuoteResponse>): UpsertLatestQuoteResponse {
+    const message = createBaseUpsertLatestQuoteResponse();
+    message.accepted = object.accepted ?? false;
+    return message;
+  },
+};
 
 function createBaseListInstrumentsRequest(): ListInstrumentsRequest {
   return { market: 0, page: undefined };
 }
 
 export const ListInstrumentsRequest: MessageFns<ListInstrumentsRequest> = {
-  encode(
-    message: ListInstrumentsRequest,
-    writer: BinaryWriter = new BinaryWriter(),
-  ): BinaryWriter {
+  encode(message: ListInstrumentsRequest, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
     if (message.market !== 0) {
       writer.uint32(8).int32(message.market);
     }
@@ -340,12 +292,8 @@ export const ListInstrumentsRequest: MessageFns<ListInstrumentsRequest> = {
     return writer;
   },
 
-  decode(
-    input: BinaryReader | Uint8Array,
-    length?: number,
-  ): ListInstrumentsRequest {
-    const reader =
-      input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): ListInstrumentsRequest {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseListInstrumentsRequest();
     while (reader.pos < end) {
@@ -397,15 +345,12 @@ export const ListInstrumentsRequest: MessageFns<ListInstrumentsRequest> = {
   create(base?: DeepPartial<ListInstrumentsRequest>): ListInstrumentsRequest {
     return ListInstrumentsRequest.fromPartial(base ?? {});
   },
-  fromPartial(
-    object: DeepPartial<ListInstrumentsRequest>,
-  ): ListInstrumentsRequest {
+  fromPartial(object: DeepPartial<ListInstrumentsRequest>): ListInstrumentsRequest {
     const message = createBaseListInstrumentsRequest();
     message.market = object.market ?? 0;
-    message.page =
-      object.page !== undefined && object.page !== null
-        ? PageRequest.fromPartial(object.page)
-        : undefined;
+    message.page = (object.page !== undefined && object.page !== null)
+      ? PageRequest.fromPartial(object.page)
+      : undefined;
     return message;
   },
 };
@@ -415,10 +360,7 @@ function createBaseListInstrumentsResponse(): ListInstrumentsResponse {
 }
 
 export const ListInstrumentsResponse: MessageFns<ListInstrumentsResponse> = {
-  encode(
-    message: ListInstrumentsResponse,
-    writer: BinaryWriter = new BinaryWriter(),
-  ): BinaryWriter {
+  encode(message: ListInstrumentsResponse, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
     for (const v of message.instruments) {
       Instrument.encode(v!, writer.uint32(10).fork()).join();
     }
@@ -428,12 +370,8 @@ export const ListInstrumentsResponse: MessageFns<ListInstrumentsResponse> = {
     return writer;
   },
 
-  decode(
-    input: BinaryReader | Uint8Array,
-    length?: number,
-  ): ListInstrumentsResponse {
-    const reader =
-      input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): ListInstrumentsResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseListInstrumentsResponse();
     while (reader.pos < end) {
@@ -487,16 +425,12 @@ export const ListInstrumentsResponse: MessageFns<ListInstrumentsResponse> = {
   create(base?: DeepPartial<ListInstrumentsResponse>): ListInstrumentsResponse {
     return ListInstrumentsResponse.fromPartial(base ?? {});
   },
-  fromPartial(
-    object: DeepPartial<ListInstrumentsResponse>,
-  ): ListInstrumentsResponse {
+  fromPartial(object: DeepPartial<ListInstrumentsResponse>): ListInstrumentsResponse {
     const message = createBaseListInstrumentsResponse();
-    message.instruments =
-      object.instruments?.map((e) => Instrument.fromPartial(e)) || [];
-    message.page =
-      object.page !== undefined && object.page !== null
-        ? PageResponse.fromPartial(object.page)
-        : undefined;
+    message.instruments = object.instruments?.map((e) => Instrument.fromPartial(e)) || [];
+    message.page = (object.page !== undefined && object.page !== null)
+      ? PageResponse.fromPartial(object.page)
+      : undefined;
     return message;
   },
 };
@@ -518,8 +452,7 @@ export const MarketDataServiceDefinition = {
       name: "UpsertLatestQuote",
       requestType: UpsertLatestQuoteRequest as typeof UpsertLatestQuoteRequest,
       requestStream: false,
-      responseType:
-        UpsertLatestQuoteResponse as typeof UpsertLatestQuoteResponse,
+      responseType: UpsertLatestQuoteResponse as typeof UpsertLatestQuoteResponse,
       responseStream: false,
       options: {},
     },
@@ -534,24 +467,13 @@ export const MarketDataServiceDefinition = {
   },
 } as const;
 
-type Builtin =
-  | Date
-  | Function
-  | Uint8Array
-  | string
-  | number
-  | boolean
-  | undefined;
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 
-export type DeepPartial<T> = T extends Builtin
-  ? T
-  : T extends globalThis.Array<infer U>
-    ? globalThis.Array<DeepPartial<U>>
-    : T extends ReadonlyArray<infer U>
-      ? ReadonlyArray<DeepPartial<U>>
-      : T extends {}
-        ? { [K in keyof T]?: DeepPartial<T[K]> }
-        : Partial<T>;
+export type DeepPartial<T> = T extends Builtin ? T
+  : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
+  : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
+  : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
+  : Partial<T>;
 
 function isSet(value: any): boolean {
   return value !== null && value !== undefined;

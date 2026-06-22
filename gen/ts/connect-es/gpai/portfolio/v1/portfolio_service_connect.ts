@@ -3,12 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import {
-  ListPositionsRequest,
-  ListPositionsResponse,
-  RecordTransactionRequest,
-  RecordTransactionResponse,
-} from "./portfolio_service_pbts";
+import { ListPositionsRequest, ListPositionsResponse, RecordTransactionRequest, RecordTransactionResponse } from "./portfolio_service_pbts";
 import { MethodKind } from "@bufbuild/protobuf";
 
 /**
@@ -37,5 +32,6 @@ export const PortfolioService = {
       O: RecordTransactionResponse,
       kind: MethodKind.Unary,
     },
-  },
+  }
 } as const;
+

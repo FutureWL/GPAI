@@ -10,7 +10,8 @@ import { IngestionJob } from "./job";
 
 export const protobufPackage = "gpai.ingestion.v1";
 
-export interface ListJobsRequest {}
+export interface ListJobsRequest {
+}
 
 export interface ListJobsResponse {
   jobs: IngestionJob[];
@@ -29,16 +30,12 @@ function createBaseListJobsRequest(): ListJobsRequest {
 }
 
 export const ListJobsRequest: MessageFns<ListJobsRequest> = {
-  encode(
-    _: ListJobsRequest,
-    writer: BinaryWriter = new BinaryWriter(),
-  ): BinaryWriter {
+  encode(_: ListJobsRequest, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
     return writer;
   },
 
   decode(input: BinaryReader | Uint8Array, length?: number): ListJobsRequest {
-    const reader =
-      input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseListJobsRequest();
     while (reader.pos < end) {
@@ -76,10 +73,7 @@ function createBaseListJobsResponse(): ListJobsResponse {
 }
 
 export const ListJobsResponse: MessageFns<ListJobsResponse> = {
-  encode(
-    message: ListJobsResponse,
-    writer: BinaryWriter = new BinaryWriter(),
-  ): BinaryWriter {
+  encode(message: ListJobsResponse, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
     for (const v of message.jobs) {
       IngestionJob.encode(v!, writer.uint32(10).fork()).join();
     }
@@ -87,8 +81,7 @@ export const ListJobsResponse: MessageFns<ListJobsResponse> = {
   },
 
   decode(input: BinaryReader | Uint8Array, length?: number): ListJobsResponse {
-    const reader =
-      input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseListJobsResponse();
     while (reader.pos < end) {
@@ -113,9 +106,7 @@ export const ListJobsResponse: MessageFns<ListJobsResponse> = {
 
   fromJSON(object: any): ListJobsResponse {
     return {
-      jobs: globalThis.Array.isArray(object?.jobs)
-        ? object.jobs.map((e: any) => IngestionJob.fromJSON(e))
-        : [],
+      jobs: globalThis.Array.isArray(object?.jobs) ? object.jobs.map((e: any) => IngestionJob.fromJSON(e)) : [],
     };
   },
 
@@ -142,10 +133,7 @@ function createBaseTriggerJobRequest(): TriggerJobRequest {
 }
 
 export const TriggerJobRequest: MessageFns<TriggerJobRequest> = {
-  encode(
-    message: TriggerJobRequest,
-    writer: BinaryWriter = new BinaryWriter(),
-  ): BinaryWriter {
+  encode(message: TriggerJobRequest, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
     if (message.jobId !== 0) {
       writer.uint32(8).int64(message.jobId);
     }
@@ -153,8 +141,7 @@ export const TriggerJobRequest: MessageFns<TriggerJobRequest> = {
   },
 
   decode(input: BinaryReader | Uint8Array, length?: number): TriggerJobRequest {
-    const reader =
-      input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseTriggerJobRequest();
     while (reader.pos < end) {
@@ -182,8 +169,8 @@ export const TriggerJobRequest: MessageFns<TriggerJobRequest> = {
       jobId: isSet(object.jobId)
         ? globalThis.Number(object.jobId)
         : isSet(object.job_id)
-          ? globalThis.Number(object.job_id)
-          : 0,
+        ? globalThis.Number(object.job_id)
+        : 0,
     };
   },
 
@@ -210,22 +197,15 @@ function createBaseTriggerJobResponse(): TriggerJobResponse {
 }
 
 export const TriggerJobResponse: MessageFns<TriggerJobResponse> = {
-  encode(
-    message: TriggerJobResponse,
-    writer: BinaryWriter = new BinaryWriter(),
-  ): BinaryWriter {
+  encode(message: TriggerJobResponse, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
     if (message.runId !== 0) {
       writer.uint32(8).int64(message.runId);
     }
     return writer;
   },
 
-  decode(
-    input: BinaryReader | Uint8Array,
-    length?: number,
-  ): TriggerJobResponse {
-    const reader =
-      input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): TriggerJobResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseTriggerJobResponse();
     while (reader.pos < end) {
@@ -253,8 +233,8 @@ export const TriggerJobResponse: MessageFns<TriggerJobResponse> = {
       runId: isSet(object.runId)
         ? globalThis.Number(object.runId)
         : isSet(object.run_id)
-          ? globalThis.Number(object.run_id)
-          : 0,
+        ? globalThis.Number(object.run_id)
+        : 0,
     };
   },
 
@@ -301,24 +281,13 @@ export const IngestionServiceDefinition = {
   },
 } as const;
 
-type Builtin =
-  | Date
-  | Function
-  | Uint8Array
-  | string
-  | number
-  | boolean
-  | undefined;
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 
-export type DeepPartial<T> = T extends Builtin
-  ? T
-  : T extends globalThis.Array<infer U>
-    ? globalThis.Array<DeepPartial<U>>
-    : T extends ReadonlyArray<infer U>
-      ? ReadonlyArray<DeepPartial<U>>
-      : T extends {}
-        ? { [K in keyof T]?: DeepPartial<T[K]> }
-        : Partial<T>;
+export type DeepPartial<T> = T extends Builtin ? T
+  : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
+  : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
+  : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
+  : Partial<T>;
 
 function longToNumber(int64: { toString(): string }): number {
   const num = globalThis.Number(int64.toString());

@@ -3,12 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import {
-  GetInstrumentRequest,
-  GetInstrumentResponse,
-  ListInstrumentsRequest,
-  ListInstrumentsResponse,
-} from "./instrument_service_pbts";
+import { GetInstrumentRequest, GetInstrumentResponse, ListInstrumentsRequest, ListInstrumentsResponse } from "./instrument_service_pbts";
 import { MethodKind } from "@bufbuild/protobuf";
 
 /**
@@ -35,5 +30,6 @@ export const InstrumentService = {
       O: ListInstrumentsResponse,
       kind: MethodKind.Unary,
     },
-  },
+  }
 } as const;
+

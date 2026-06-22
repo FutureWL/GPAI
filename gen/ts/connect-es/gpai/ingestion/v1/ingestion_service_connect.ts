@@ -3,12 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import {
-  ListJobsRequest,
-  ListJobsResponse,
-  TriggerJobRequest,
-  TriggerJobResponse,
-} from "./ingestion_service_pbts";
+import { ListJobsRequest, ListJobsResponse, TriggerJobRequest, TriggerJobResponse } from "./ingestion_service_pbts";
 import { MethodKind } from "@bufbuild/protobuf";
 
 /**
@@ -37,5 +32,6 @@ export const IngestionService = {
       O: TriggerJobResponse,
       kind: MethodKind.Unary,
     },
-  },
+  }
 } as const;
+

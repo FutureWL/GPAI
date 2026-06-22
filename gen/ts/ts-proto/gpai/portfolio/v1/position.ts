@@ -39,10 +39,7 @@ function createBasePosition(): Position {
 }
 
 export const Position: MessageFns<Position> = {
-  encode(
-    message: Position,
-    writer: BinaryWriter = new BinaryWriter(),
-  ): BinaryWriter {
+  encode(message: Position, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
     if (message.id !== "") {
       writer.uint32(10).string(message.id);
     }
@@ -59,10 +56,7 @@ export const Position: MessageFns<Position> = {
       writer.uint32(42).string(message.avgCost);
     }
     if (message.openedAt !== undefined) {
-      Timestamp.encode(
-        toTimestamp(message.openedAt),
-        writer.uint32(50).fork(),
-      ).join();
+      Timestamp.encode(toTimestamp(message.openedAt), writer.uint32(50).fork()).join();
     }
     if (message.marketValue !== undefined) {
       Money.encode(message.marketValue, writer.uint32(58).fork()).join();
@@ -77,8 +71,7 @@ export const Position: MessageFns<Position> = {
   },
 
   decode(input: BinaryReader | Uint8Array, length?: number): Position {
-    const reader =
-      input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBasePosition();
     while (reader.pos < end) {
@@ -129,9 +122,7 @@ export const Position: MessageFns<Position> = {
             break;
           }
 
-          message.openedAt = fromTimestamp(
-            Timestamp.decode(reader, reader.uint32()),
-          );
+          message.openedAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
           continue;
         }
         case 7: {
@@ -173,39 +164,39 @@ export const Position: MessageFns<Position> = {
       portfolioId: isSet(object.portfolioId)
         ? globalThis.String(object.portfolioId)
         : isSet(object.portfolio_id)
-          ? globalThis.String(object.portfolio_id)
-          : "",
+        ? globalThis.String(object.portfolio_id)
+        : "",
       instrumentId: isSet(object.instrumentId)
         ? globalThis.String(object.instrumentId)
         : isSet(object.instrument_id)
-          ? globalThis.String(object.instrument_id)
-          : "",
+        ? globalThis.String(object.instrument_id)
+        : "",
       quantity: isSet(object.quantity) ? globalThis.Number(object.quantity) : 0,
       avgCost: isSet(object.avgCost)
         ? globalThis.String(object.avgCost)
         : isSet(object.avg_cost)
-          ? globalThis.String(object.avg_cost)
-          : "",
+        ? globalThis.String(object.avg_cost)
+        : "",
       openedAt: isSet(object.openedAt)
         ? fromJsonTimestamp(object.openedAt)
         : isSet(object.opened_at)
-          ? fromJsonTimestamp(object.opened_at)
-          : undefined,
+        ? fromJsonTimestamp(object.opened_at)
+        : undefined,
       marketValue: isSet(object.marketValue)
         ? Money.fromJSON(object.marketValue)
         : isSet(object.market_value)
-          ? Money.fromJSON(object.market_value)
-          : undefined,
+        ? Money.fromJSON(object.market_value)
+        : undefined,
       unrealizedPnl: isSet(object.unrealizedPnl)
         ? globalThis.Number(object.unrealizedPnl)
         : isSet(object.unrealized_pnl)
-          ? globalThis.Number(object.unrealized_pnl)
-          : 0,
+        ? globalThis.Number(object.unrealized_pnl)
+        : 0,
       unrealizedPnlPct: isSet(object.unrealizedPnlPct)
         ? globalThis.Number(object.unrealizedPnlPct)
         : isSet(object.unrealized_pnl_pct)
-          ? globalThis.Number(object.unrealized_pnl_pct)
-          : 0,
+        ? globalThis.Number(object.unrealized_pnl_pct)
+        : 0,
     };
   },
 
@@ -252,34 +243,22 @@ export const Position: MessageFns<Position> = {
     message.quantity = object.quantity ?? 0;
     message.avgCost = object.avgCost ?? "";
     message.openedAt = object.openedAt ?? undefined;
-    message.marketValue =
-      object.marketValue !== undefined && object.marketValue !== null
-        ? Money.fromPartial(object.marketValue)
-        : undefined;
+    message.marketValue = (object.marketValue !== undefined && object.marketValue !== null)
+      ? Money.fromPartial(object.marketValue)
+      : undefined;
     message.unrealizedPnl = object.unrealizedPnl ?? 0;
     message.unrealizedPnlPct = object.unrealizedPnlPct ?? 0;
     return message;
   },
 };
 
-type Builtin =
-  | Date
-  | Function
-  | Uint8Array
-  | string
-  | number
-  | boolean
-  | undefined;
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 
-export type DeepPartial<T> = T extends Builtin
-  ? T
-  : T extends globalThis.Array<infer U>
-    ? globalThis.Array<DeepPartial<U>>
-    : T extends ReadonlyArray<infer U>
-      ? ReadonlyArray<DeepPartial<U>>
-      : T extends {}
-        ? { [K in keyof T]?: DeepPartial<T[K]> }
-        : Partial<T>;
+export type DeepPartial<T> = T extends Builtin ? T
+  : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
+  : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
+  : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
+  : Partial<T>;
 
 function toTimestamp(date: Date): Timestamp {
   const seconds = Math.trunc(date.getTime() / 1_000);

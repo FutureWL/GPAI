@@ -38,10 +38,7 @@ function createBaseIngestionJob(): IngestionJob {
 }
 
 export const IngestionJob: MessageFns<IngestionJob> = {
-  encode(
-    message: IngestionJob,
-    writer: BinaryWriter = new BinaryWriter(),
-  ): BinaryWriter {
+  encode(message: IngestionJob, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
     if (message.id !== 0) {
       writer.uint32(8).int64(message.id);
     }
@@ -61,10 +58,7 @@ export const IngestionJob: MessageFns<IngestionJob> = {
       writer.uint32(48).bool(message.enabled);
     }
     if (message.lastRunAt !== undefined) {
-      Timestamp.encode(
-        toTimestamp(message.lastRunAt),
-        writer.uint32(58).fork(),
-      ).join();
+      Timestamp.encode(toTimestamp(message.lastRunAt), writer.uint32(58).fork()).join();
     }
     if (message.lastStatus !== 0) {
       writer.uint32(64).int32(message.lastStatus);
@@ -73,8 +67,7 @@ export const IngestionJob: MessageFns<IngestionJob> = {
   },
 
   decode(input: BinaryReader | Uint8Array, length?: number): IngestionJob {
-    const reader =
-      input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseIngestionJob();
     while (reader.pos < end) {
@@ -133,9 +126,7 @@ export const IngestionJob: MessageFns<IngestionJob> = {
             break;
           }
 
-          message.lastRunAt = fromTimestamp(
-            Timestamp.decode(reader, reader.uint32()),
-          );
+          message.lastRunAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
           continue;
         }
         case 8: {
@@ -161,30 +152,26 @@ export const IngestionJob: MessageFns<IngestionJob> = {
       sourceId: isSet(object.sourceId)
         ? globalThis.String(object.sourceId)
         : isSet(object.source_id)
-          ? globalThis.String(object.source_id)
-          : "",
+        ? globalThis.String(object.source_id)
+        : "",
       market: isSet(object.market) ? marketFromJSON(object.market) : 0,
       instrumentId: isSet(object.instrumentId)
         ? globalThis.String(object.instrumentId)
         : isSet(object.instrument_id)
-          ? globalThis.String(object.instrument_id)
-          : "",
-      schedule: isSet(object.schedule)
-        ? globalThis.String(object.schedule)
+        ? globalThis.String(object.instrument_id)
         : "",
-      enabled: isSet(object.enabled)
-        ? globalThis.Boolean(object.enabled)
-        : false,
+      schedule: isSet(object.schedule) ? globalThis.String(object.schedule) : "",
+      enabled: isSet(object.enabled) ? globalThis.Boolean(object.enabled) : false,
       lastRunAt: isSet(object.lastRunAt)
         ? fromJsonTimestamp(object.lastRunAt)
         : isSet(object.last_run_at)
-          ? fromJsonTimestamp(object.last_run_at)
-          : undefined,
+        ? fromJsonTimestamp(object.last_run_at)
+        : undefined,
       lastStatus: isSet(object.lastStatus)
         ? globalThis.Number(object.lastStatus)
         : isSet(object.last_status)
-          ? globalThis.Number(object.last_status)
-          : 0,
+        ? globalThis.Number(object.last_status)
+        : 0,
     };
   },
 
@@ -234,24 +221,13 @@ export const IngestionJob: MessageFns<IngestionJob> = {
   },
 };
 
-type Builtin =
-  | Date
-  | Function
-  | Uint8Array
-  | string
-  | number
-  | boolean
-  | undefined;
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 
-export type DeepPartial<T> = T extends Builtin
-  ? T
-  : T extends globalThis.Array<infer U>
-    ? globalThis.Array<DeepPartial<U>>
-    : T extends ReadonlyArray<infer U>
-      ? ReadonlyArray<DeepPartial<U>>
-      : T extends {}
-        ? { [K in keyof T]?: DeepPartial<T[K]> }
-        : Partial<T>;
+export type DeepPartial<T> = T extends Builtin ? T
+  : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
+  : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
+  : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
+  : Partial<T>;
 
 function toTimestamp(date: Date): Timestamp {
   const seconds = Math.trunc(date.getTime() / 1_000);

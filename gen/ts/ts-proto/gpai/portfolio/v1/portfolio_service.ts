@@ -32,22 +32,15 @@ function createBaseListPositionsRequest(): ListPositionsRequest {
 }
 
 export const ListPositionsRequest: MessageFns<ListPositionsRequest> = {
-  encode(
-    message: ListPositionsRequest,
-    writer: BinaryWriter = new BinaryWriter(),
-  ): BinaryWriter {
+  encode(message: ListPositionsRequest, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
     if (message.portfolioId !== "") {
       writer.uint32(10).string(message.portfolioId);
     }
     return writer;
   },
 
-  decode(
-    input: BinaryReader | Uint8Array,
-    length?: number,
-  ): ListPositionsRequest {
-    const reader =
-      input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): ListPositionsRequest {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseListPositionsRequest();
     while (reader.pos < end) {
@@ -75,8 +68,8 @@ export const ListPositionsRequest: MessageFns<ListPositionsRequest> = {
       portfolioId: isSet(object.portfolioId)
         ? globalThis.String(object.portfolioId)
         : isSet(object.portfolio_id)
-          ? globalThis.String(object.portfolio_id)
-          : "",
+        ? globalThis.String(object.portfolio_id)
+        : "",
     };
   },
 
@@ -103,22 +96,15 @@ function createBaseListPositionsResponse(): ListPositionsResponse {
 }
 
 export const ListPositionsResponse: MessageFns<ListPositionsResponse> = {
-  encode(
-    message: ListPositionsResponse,
-    writer: BinaryWriter = new BinaryWriter(),
-  ): BinaryWriter {
+  encode(message: ListPositionsResponse, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
     for (const v of message.positions) {
       Position.encode(v!, writer.uint32(10).fork()).join();
     }
     return writer;
   },
 
-  decode(
-    input: BinaryReader | Uint8Array,
-    length?: number,
-  ): ListPositionsResponse {
-    const reader =
-      input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): ListPositionsResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseListPositionsResponse();
     while (reader.pos < end) {
@@ -160,12 +146,9 @@ export const ListPositionsResponse: MessageFns<ListPositionsResponse> = {
   create(base?: DeepPartial<ListPositionsResponse>): ListPositionsResponse {
     return ListPositionsResponse.fromPartial(base ?? {});
   },
-  fromPartial(
-    object: DeepPartial<ListPositionsResponse>,
-  ): ListPositionsResponse {
+  fromPartial(object: DeepPartial<ListPositionsResponse>): ListPositionsResponse {
     const message = createBaseListPositionsResponse();
-    message.positions =
-      object.positions?.map((e) => Position.fromPartial(e)) || [];
+    message.positions = object.positions?.map((e) => Position.fromPartial(e)) || [];
     return message;
   },
 };
@@ -175,22 +158,15 @@ function createBaseRecordTransactionRequest(): RecordTransactionRequest {
 }
 
 export const RecordTransactionRequest: MessageFns<RecordTransactionRequest> = {
-  encode(
-    message: RecordTransactionRequest,
-    writer: BinaryWriter = new BinaryWriter(),
-  ): BinaryWriter {
+  encode(message: RecordTransactionRequest, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
     if (message.transaction !== undefined) {
       Transaction.encode(message.transaction, writer.uint32(10).fork()).join();
     }
     return writer;
   },
 
-  decode(
-    input: BinaryReader | Uint8Array,
-    length?: number,
-  ): RecordTransactionRequest {
-    const reader =
-      input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): RecordTransactionRequest {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseRecordTransactionRequest();
     while (reader.pos < end) {
@@ -214,11 +190,7 @@ export const RecordTransactionRequest: MessageFns<RecordTransactionRequest> = {
   },
 
   fromJSON(object: any): RecordTransactionRequest {
-    return {
-      transaction: isSet(object.transaction)
-        ? Transaction.fromJSON(object.transaction)
-        : undefined,
-    };
+    return { transaction: isSet(object.transaction) ? Transaction.fromJSON(object.transaction) : undefined };
   },
 
   toJSON(message: RecordTransactionRequest): unknown {
@@ -229,19 +201,14 @@ export const RecordTransactionRequest: MessageFns<RecordTransactionRequest> = {
     return obj;
   },
 
-  create(
-    base?: DeepPartial<RecordTransactionRequest>,
-  ): RecordTransactionRequest {
+  create(base?: DeepPartial<RecordTransactionRequest>): RecordTransactionRequest {
     return RecordTransactionRequest.fromPartial(base ?? {});
   },
-  fromPartial(
-    object: DeepPartial<RecordTransactionRequest>,
-  ): RecordTransactionRequest {
+  fromPartial(object: DeepPartial<RecordTransactionRequest>): RecordTransactionRequest {
     const message = createBaseRecordTransactionRequest();
-    message.transaction =
-      object.transaction !== undefined && object.transaction !== null
-        ? Transaction.fromPartial(object.transaction)
-        : undefined;
+    message.transaction = (object.transaction !== undefined && object.transaction !== null)
+      ? Transaction.fromPartial(object.transaction)
+      : undefined;
     return message;
   },
 };
@@ -250,71 +217,59 @@ function createBaseRecordTransactionResponse(): RecordTransactionResponse {
   return { id: "" };
 }
 
-export const RecordTransactionResponse: MessageFns<RecordTransactionResponse> =
-  {
-    encode(
-      message: RecordTransactionResponse,
-      writer: BinaryWriter = new BinaryWriter(),
-    ): BinaryWriter {
-      if (message.id !== "") {
-        writer.uint32(10).string(message.id);
-      }
-      return writer;
-    },
+export const RecordTransactionResponse: MessageFns<RecordTransactionResponse> = {
+  encode(message: RecordTransactionResponse, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+    if (message.id !== "") {
+      writer.uint32(10).string(message.id);
+    }
+    return writer;
+  },
 
-    decode(
-      input: BinaryReader | Uint8Array,
-      length?: number,
-    ): RecordTransactionResponse {
-      const reader =
-        input instanceof BinaryReader ? input : new BinaryReader(input);
-      const end = length === undefined ? reader.len : reader.pos + length;
-      const message = createBaseRecordTransactionResponse();
-      while (reader.pos < end) {
-        const tag = reader.uint32();
-        switch (tag >>> 3) {
-          case 1: {
-            if (tag !== 10) {
-              break;
-            }
-
-            message.id = reader.string();
-            continue;
+  decode(input: BinaryReader | Uint8Array, length?: number): RecordTransactionResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseRecordTransactionResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1: {
+          if (tag !== 10) {
+            break;
           }
+
+          message.id = reader.string();
+          continue;
         }
-        if ((tag & 7) === 4 || tag === 0) {
-          break;
-        }
-        reader.skip(tag & 7);
       }
-      return message;
-    },
-
-    fromJSON(object: any): RecordTransactionResponse {
-      return { id: isSet(object.id) ? globalThis.String(object.id) : "" };
-    },
-
-    toJSON(message: RecordTransactionResponse): unknown {
-      const obj: any = {};
-      if (message.id !== "") {
-        obj.id = message.id;
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
       }
-      return obj;
-    },
+      reader.skip(tag & 7);
+    }
+    return message;
+  },
 
-    create(
-      base?: DeepPartial<RecordTransactionResponse>,
-    ): RecordTransactionResponse {
-      return RecordTransactionResponse.fromPartial(base ?? {});
-    },
-    fromPartial(
-      object: DeepPartial<RecordTransactionResponse>,
-    ): RecordTransactionResponse {
-      const message = createBaseRecordTransactionResponse();
-      message.id = object.id ?? "";
-      return message;
-    },
-  };
+  fromJSON(object: any): RecordTransactionResponse {
+    return { id: isSet(object.id) ? globalThis.String(object.id) : "" };
+  },
+
+  toJSON(message: RecordTransactionResponse): unknown {
+    const obj: any = {};
+    if (message.id !== "") {
+      obj.id = message.id;
+    }
+    return obj;
+  },
+
+  create(base?: DeepPartial<RecordTransactionResponse>): RecordTransactionResponse {
+    return RecordTransactionResponse.fromPartial(base ?? {});
+  },
+  fromPartial(object: DeepPartial<RecordTransactionResponse>): RecordTransactionResponse {
+    const message = createBaseRecordTransactionResponse();
+    message.id = object.id ?? "";
+    return message;
+  },
+};
 
 export type PortfolioServiceDefinition = typeof PortfolioServiceDefinition;
 export const PortfolioServiceDefinition = {
@@ -334,32 +289,20 @@ export const PortfolioServiceDefinition = {
       name: "RecordTransaction",
       requestType: RecordTransactionRequest as typeof RecordTransactionRequest,
       requestStream: false,
-      responseType:
-        RecordTransactionResponse as typeof RecordTransactionResponse,
+      responseType: RecordTransactionResponse as typeof RecordTransactionResponse,
       responseStream: false,
       options: {},
     },
   },
 } as const;
 
-type Builtin =
-  | Date
-  | Function
-  | Uint8Array
-  | string
-  | number
-  | boolean
-  | undefined;
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 
-export type DeepPartial<T> = T extends Builtin
-  ? T
-  : T extends globalThis.Array<infer U>
-    ? globalThis.Array<DeepPartial<U>>
-    : T extends ReadonlyArray<infer U>
-      ? ReadonlyArray<DeepPartial<U>>
-      : T extends {}
-        ? { [K in keyof T]?: DeepPartial<T[K]> }
-        : Partial<T>;
+export type DeepPartial<T> = T extends Builtin ? T
+  : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
+  : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
+  : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
+  : Partial<T>;
 
 function isSet(value: any): boolean {
   return value !== null && value !== undefined;

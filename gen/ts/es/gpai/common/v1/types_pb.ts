@@ -2,22 +2,15 @@
 // @generated from file gpai/common/v1/types.proto (package gpai.common.v1, syntax proto3)
 /* eslint-disable */
 
-import type {
-  GenEnum,
-  GenFile,
-  GenMessage,
-} from "@bufbuild/protobuf/codegenv2";
+import type { GenEnum, GenFile, GenMessage } from "@bufbuild/protobuf/codegenv2";
 import { enumDesc, fileDesc, messageDesc } from "@bufbuild/protobuf/codegenv2";
 import type { Message } from "@bufbuild/protobuf";
 
 /**
  * Describes the file gpai/common/v1/types.proto.
  */
-export const file_gpai_common_v1_types: GenFile =
-  /*@__PURE__*/
-  fileDesc(
-    "ChpncGFpL2NvbW1vbi92MS90eXBlcy5wcm90bxIOZ3BhaS5jb21tb24udjEiLwoFTW9uZXkSFAoMYW1vdW50X21pbm9yGAEgASgDEhAKCGN1cnJlbmN5GAIgASgJKk0KBk1hcmtldBIWChJNQVJLRVRfVU5TUEVDSUZJRUQQABINCglNQVJLRVRfQ04QARINCglNQVJLRVRfSEsQAhINCglNQVJLRVRfVVMQAyq2AQoKQXNzZXRDbGFzcxIbChdBU1NFVF9DTEFTU19VTlNQRUNJRklFRBAAEhYKEkFTU0VUX0NMQVNTX0VRVUlUWRABEhMKD0FTU0VUX0NMQVNTX0VURhACEhUKEUFTU0VUX0NMQVNTX0lOREVYEAMSFwoTQVNTRVRfQ0xBU1NfRlVUVVJFUxAEEhYKEkFTU0VUX0NMQVNTX09QVElPThAFEhYKEkFTU0VUX0NMQVNTX0NSWVBUTxAGKp0BCghJbnRlcnZhbBIYChRJTlRFUlZBTF9VTlNQRUNJRklFRBAAEg8KC0lOVEVSVkFMXzFNEAESDwoLSU5URVJWQUxfNU0QAhIQCgxJTlRFUlZBTF8xNU0QAxIPCgtJTlRFUlZBTF8xSBAEEg8KC0lOVEVSVkFMXzFEEAUSDwoLSU5URVJWQUxfMVcQBhIQCgxJTlRFUlZBTF8xTU8QB2IGcHJvdG8z",
-  );
+export const file_gpai_common_v1_types: GenFile = /*@__PURE__*/
+  fileDesc("ChpncGFpL2NvbW1vbi92MS90eXBlcy5wcm90bxIOZ3BhaS5jb21tb24udjEiLwoFTW9uZXkSFAoMYW1vdW50X21pbm9yGAEgASgDEhAKCGN1cnJlbmN5GAIgASgJKk0KBk1hcmtldBIWChJNQVJLRVRfVU5TUEVDSUZJRUQQABINCglNQVJLRVRfQ04QARINCglNQVJLRVRfSEsQAhINCglNQVJLRVRfVVMQAyq2AQoKQXNzZXRDbGFzcxIbChdBU1NFVF9DTEFTU19VTlNQRUNJRklFRBAAEhYKEkFTU0VUX0NMQVNTX0VRVUlUWRABEhMKD0FTU0VUX0NMQVNTX0VURhACEhUKEUFTU0VUX0NMQVNTX0lOREVYEAMSFwoTQVNTRVRfQ0xBU1NfRlVUVVJFUxAEEhYKEkFTU0VUX0NMQVNTX09QVElPThAFEhYKEkFTU0VUX0NMQVNTX0NSWVBUTxAGKp0BCghJbnRlcnZhbBIYChRJTlRFUlZBTF9VTlNQRUNJRklFRBAAEg8KC0lOVEVSVkFMXzFNEAESDwoLSU5URVJWQUxfNU0QAhIQCgxJTlRFUlZBTF8xNU0QAxIPCgtJTlRFUlZBTF8xSBAEEg8KC0lOVEVSVkFMXzFEEAUSDwoLSU5URVJWQUxfMVcQBhIQCgxJTlRFUlZBTF8xTU8QB0IwWi5naXRodWIuY29tL0Z1dHVyZVdML0dQQUkvZ2VuL2dvL2dwYWkvY29tbW9uL3YxYgZwcm90bzM");
 
 /**
  * @generated from message gpai.common.v1.Money
@@ -42,8 +35,7 @@ export type Money = Message<"gpai.common.v1.Money"> & {
  * Describes the message gpai.common.v1.Money.
  * Use `create(MoneySchema)` to create a new message.
  */
-export const MoneySchema: GenMessage<Money> =
-  /*@__PURE__*/
+export const MoneySchema: GenMessage<Money> = /*@__PURE__*/
   messageDesc(file_gpai_common_v1_types, 0);
 
 /**
@@ -74,8 +66,7 @@ export enum Market {
 /**
  * Describes the enum gpai.common.v1.Market.
  */
-export const MarketSchema: GenEnum<Market> =
-  /*@__PURE__*/
+export const MarketSchema: GenEnum<Market> = /*@__PURE__*/
   enumDesc(file_gpai_common_v1_types, 0);
 
 /**
@@ -121,8 +112,7 @@ export enum AssetClass {
 /**
  * Describes the enum gpai.common.v1.AssetClass.
  */
-export const AssetClassSchema: GenEnum<AssetClass> =
-  /*@__PURE__*/
+export const AssetClassSchema: GenEnum<AssetClass> = /*@__PURE__*/
   enumDesc(file_gpai_common_v1_types, 1);
 
 /**
@@ -173,6 +163,6 @@ export enum Interval {
 /**
  * Describes the enum gpai.common.v1.Interval.
  */
-export const IntervalSchema: GenEnum<Interval> =
-  /*@__PURE__*/
+export const IntervalSchema: GenEnum<Interval> = /*@__PURE__*/
   enumDesc(file_gpai_common_v1_types, 2);
+

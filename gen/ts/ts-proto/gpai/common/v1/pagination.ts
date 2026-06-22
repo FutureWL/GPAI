@@ -27,10 +27,7 @@ function createBasePageRequest(): PageRequest {
 }
 
 export const PageRequest: MessageFns<PageRequest> = {
-  encode(
-    message: PageRequest,
-    writer: BinaryWriter = new BinaryWriter(),
-  ): BinaryWriter {
+  encode(message: PageRequest, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
     if (message.page !== 0) {
       writer.uint32(8).int32(message.page);
     }
@@ -41,8 +38,7 @@ export const PageRequest: MessageFns<PageRequest> = {
   },
 
   decode(input: BinaryReader | Uint8Array, length?: number): PageRequest {
-    const reader =
-      input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBasePageRequest();
     while (reader.pos < end) {
@@ -79,8 +75,8 @@ export const PageRequest: MessageFns<PageRequest> = {
       pageSize: isSet(object.pageSize)
         ? globalThis.Number(object.pageSize)
         : isSet(object.page_size)
-          ? globalThis.Number(object.page_size)
-          : 0,
+        ? globalThis.Number(object.page_size)
+        : 0,
     };
   },
 
@@ -111,10 +107,7 @@ function createBasePageResponse(): PageResponse {
 }
 
 export const PageResponse: MessageFns<PageResponse> = {
-  encode(
-    message: PageResponse,
-    writer: BinaryWriter = new BinaryWriter(),
-  ): BinaryWriter {
+  encode(message: PageResponse, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
     if (message.total !== 0) {
       writer.uint32(8).int32(message.total);
     }
@@ -128,8 +121,7 @@ export const PageResponse: MessageFns<PageResponse> = {
   },
 
   decode(input: BinaryReader | Uint8Array, length?: number): PageResponse {
-    const reader =
-      input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBasePageResponse();
     while (reader.pos < end) {
@@ -175,8 +167,8 @@ export const PageResponse: MessageFns<PageResponse> = {
       pageSize: isSet(object.pageSize)
         ? globalThis.Number(object.pageSize)
         : isSet(object.page_size)
-          ? globalThis.Number(object.page_size)
-          : 0,
+        ? globalThis.Number(object.page_size)
+        : 0,
     };
   },
 
@@ -206,24 +198,13 @@ export const PageResponse: MessageFns<PageResponse> = {
   },
 };
 
-type Builtin =
-  | Date
-  | Function
-  | Uint8Array
-  | string
-  | number
-  | boolean
-  | undefined;
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 
-export type DeepPartial<T> = T extends Builtin
-  ? T
-  : T extends globalThis.Array<infer U>
-    ? globalThis.Array<DeepPartial<U>>
-    : T extends ReadonlyArray<infer U>
-      ? ReadonlyArray<DeepPartial<U>>
-      : T extends {}
-        ? { [K in keyof T]?: DeepPartial<T[K]> }
-        : Partial<T>;
+export type DeepPartial<T> = T extends Builtin ? T
+  : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
+  : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
+  : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
+  : Partial<T>;
 
 function isSet(value: any): boolean {
   return value !== null && value !== undefined;

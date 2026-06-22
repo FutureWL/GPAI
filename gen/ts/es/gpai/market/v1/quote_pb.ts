@@ -11,12 +11,8 @@ import type { Message } from "@bufbuild/protobuf";
 /**
  * Describes the file gpai/market/v1/quote.proto.
  */
-export const file_gpai_market_v1_quote: GenFile =
-  /*@__PURE__*/
-  fileDesc(
-    "ChpncGFpL21hcmtldC92MS9xdW90ZS5wcm90bxIOZ3BhaS5tYXJrZXQudjEi3QEKBVF1b3RlEhUKDWluc3RydW1lbnRfaWQYASABKAkSEgoKbGFzdF9wcmljZRgCIAEoARIMCgRvcGVuGAMgASgBEgwKBGhpZ2gYBCABKAESCwoDbG93GAUgASgBEhIKCnByZXZfY2xvc2UYBiABKAESDgoGdm9sdW1lGAcgASgDEhAKCHR1cm5vdmVyGAggASgDEg4KBmNoYW5nZRgJIAEoARISCgpjaGFuZ2VfcGN0GAogASgBEiYKAnRzGAsgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcGIGcHJvdG8z",
-    [file_google_protobuf_timestamp],
-  );
+export const file_gpai_market_v1_quote: GenFile = /*@__PURE__*/
+  fileDesc("ChpncGFpL21hcmtldC92MS9xdW90ZS5wcm90bxIOZ3BhaS5tYXJrZXQudjEi3QEKBVF1b3RlEhUKDWluc3RydW1lbnRfaWQYASABKAkSEgoKbGFzdF9wcmljZRgCIAEoARIMCgRvcGVuGAMgASgBEgwKBGhpZ2gYBCABKAESCwoDbG93GAUgASgBEhIKCnByZXZfY2xvc2UYBiABKAESDgoGdm9sdW1lGAcgASgDEhAKCHR1cm5vdmVyGAggASgDEg4KBmNoYW5nZRgJIAEoARISCgpjaGFuZ2VfcGN0GAogASgBEiYKAnRzGAsgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcEIwWi5naXRodWIuY29tL0Z1dHVyZVdML0dQQUkvZ2VuL2dvL2dwYWkvbWFya2V0L3YxYgZwcm90bzM", [file_google_protobuf_timestamp]);
 
 /**
  * @generated from message gpai.market.v1.Quote
@@ -82,6 +78,6 @@ export type Quote = Message<"gpai.market.v1.Quote"> & {
  * Describes the message gpai.market.v1.Quote.
  * Use `create(QuoteSchema)` to create a new message.
  */
-export const QuoteSchema: GenMessage<Quote> =
-  /*@__PURE__*/
+export const QuoteSchema: GenMessage<Quote> = /*@__PURE__*/
   messageDesc(file_gpai_market_v1_quote, 0);
+

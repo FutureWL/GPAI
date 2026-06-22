@@ -7,11 +7,7 @@
 /* eslint-disable */
 import { BinaryReader, BinaryWriter } from "@bufbuild/protobuf/wire";
 import { Timestamp } from "../../../google/protobuf/timestamp";
-import {
-  Interval,
-  intervalFromJSON,
-  intervalToJSON,
-} from "../../common/v1/types";
+import { Interval, intervalFromJSON, intervalToJSON } from "../../common/v1/types";
 
 export const protobufPackage = "gpai.market.v1";
 
@@ -42,10 +38,7 @@ function createBaseOHLCV(): OHLCV {
 }
 
 export const OHLCV: MessageFns<OHLCV> = {
-  encode(
-    message: OHLCV,
-    writer: BinaryWriter = new BinaryWriter(),
-  ): BinaryWriter {
+  encode(message: OHLCV, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
     if (message.instrumentId !== "") {
       writer.uint32(10).string(message.instrumentId);
     }
@@ -53,10 +46,7 @@ export const OHLCV: MessageFns<OHLCV> = {
       writer.uint32(16).int32(message.interval);
     }
     if (message.openTime !== undefined) {
-      Timestamp.encode(
-        toTimestamp(message.openTime),
-        writer.uint32(26).fork(),
-      ).join();
+      Timestamp.encode(toTimestamp(message.openTime), writer.uint32(26).fork()).join();
     }
     if (message.open !== 0) {
       writer.uint32(33).double(message.open);
@@ -80,8 +70,7 @@ export const OHLCV: MessageFns<OHLCV> = {
   },
 
   decode(input: BinaryReader | Uint8Array, length?: number): OHLCV {
-    const reader =
-      input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseOHLCV();
     while (reader.pos < end) {
@@ -108,9 +97,7 @@ export const OHLCV: MessageFns<OHLCV> = {
             break;
           }
 
-          message.openTime = fromTimestamp(
-            Timestamp.decode(reader, reader.uint32()),
-          );
+          message.openTime = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
           continue;
         }
         case 4: {
@@ -175,14 +162,14 @@ export const OHLCV: MessageFns<OHLCV> = {
       instrumentId: isSet(object.instrumentId)
         ? globalThis.String(object.instrumentId)
         : isSet(object.instrument_id)
-          ? globalThis.String(object.instrument_id)
-          : "",
+        ? globalThis.String(object.instrument_id)
+        : "",
       interval: isSet(object.interval) ? intervalFromJSON(object.interval) : 0,
       openTime: isSet(object.openTime)
         ? fromJsonTimestamp(object.openTime)
         : isSet(object.open_time)
-          ? fromJsonTimestamp(object.open_time)
-          : undefined,
+        ? fromJsonTimestamp(object.open_time)
+        : undefined,
       open: isSet(object.open) ? globalThis.Number(object.open) : 0,
       high: isSet(object.high) ? globalThis.Number(object.high) : 0,
       low: isSet(object.low) ? globalThis.Number(object.low) : 0,
@@ -242,24 +229,13 @@ export const OHLCV: MessageFns<OHLCV> = {
   },
 };
 
-type Builtin =
-  | Date
-  | Function
-  | Uint8Array
-  | string
-  | number
-  | boolean
-  | undefined;
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 
-export type DeepPartial<T> = T extends Builtin
-  ? T
-  : T extends globalThis.Array<infer U>
-    ? globalThis.Array<DeepPartial<U>>
-    : T extends ReadonlyArray<infer U>
-      ? ReadonlyArray<DeepPartial<U>>
-      : T extends {}
-        ? { [K in keyof T]?: DeepPartial<T[K]> }
-        : Partial<T>;
+export type DeepPartial<T> = T extends Builtin ? T
+  : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
+  : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
+  : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
+  : Partial<T>;
 
 function toTimestamp(date: Date): Timestamp {
   const seconds = Math.trunc(date.getTime() / 1_000);

@@ -9,11 +9,8 @@ import type { Message } from "@bufbuild/protobuf";
 /**
  * Describes the file gpai/common/v1/pagination.proto.
  */
-export const file_gpai_common_v1_pagination: GenFile =
-  /*@__PURE__*/
-  fileDesc(
-    "Ch9ncGFpL2NvbW1vbi92MS9wYWdpbmF0aW9uLnByb3RvEg5ncGFpLmNvbW1vbi52MSIuCgtQYWdlUmVxdWVzdBIMCgRwYWdlGAEgASgFEhEKCXBhZ2Vfc2l6ZRgCIAEoBSI+CgxQYWdlUmVzcG9uc2USDQoFdG90YWwYASABKAUSDAoEcGFnZRgCIAEoBRIRCglwYWdlX3NpemUYAyABKAViBnByb3RvMw",
-  );
+export const file_gpai_common_v1_pagination: GenFile = /*@__PURE__*/
+  fileDesc("Ch9ncGFpL2NvbW1vbi92MS9wYWdpbmF0aW9uLnByb3RvEg5ncGFpLmNvbW1vbi52MSIuCgtQYWdlUmVxdWVzdBIMCgRwYWdlGAEgASgFEhEKCXBhZ2Vfc2l6ZRgCIAEoBSI+CgxQYWdlUmVzcG9uc2USDQoFdG90YWwYASABKAUSDAoEcGFnZRgCIAEoBRIRCglwYWdlX3NpemUYAyABKAVCMFouZ2l0aHViLmNvbS9GdXR1cmVXTC9HUEFJL2dlbi9nby9ncGFpL2NvbW1vbi92MWIGcHJvdG8z");
 
 /**
  * @generated from message gpai.common.v1.PageRequest
@@ -38,8 +35,7 @@ export type PageRequest = Message<"gpai.common.v1.PageRequest"> & {
  * Describes the message gpai.common.v1.PageRequest.
  * Use `create(PageRequestSchema)` to create a new message.
  */
-export const PageRequestSchema: GenMessage<PageRequest> =
-  /*@__PURE__*/
+export const PageRequestSchema: GenMessage<PageRequest> = /*@__PURE__*/
   messageDesc(file_gpai_common_v1_pagination, 0);
 
 /**
@@ -66,6 +62,6 @@ export type PageResponse = Message<"gpai.common.v1.PageResponse"> & {
  * Describes the message gpai.common.v1.PageResponse.
  * Use `create(PageResponseSchema)` to create a new message.
  */
-export const PageResponseSchema: GenMessage<PageResponse> =
-  /*@__PURE__*/
+export const PageResponseSchema: GenMessage<PageResponse> = /*@__PURE__*/
   messageDesc(file_gpai_common_v1_pagination, 1);
+

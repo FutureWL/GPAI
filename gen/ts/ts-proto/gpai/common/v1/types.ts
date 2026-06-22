@@ -198,10 +198,7 @@ function createBaseMoney(): Money {
 }
 
 export const Money: MessageFns<Money> = {
-  encode(
-    message: Money,
-    writer: BinaryWriter = new BinaryWriter(),
-  ): BinaryWriter {
+  encode(message: Money, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
     if (message.amountMinor !== 0) {
       writer.uint32(8).int64(message.amountMinor);
     }
@@ -212,8 +209,7 @@ export const Money: MessageFns<Money> = {
   },
 
   decode(input: BinaryReader | Uint8Array, length?: number): Money {
-    const reader =
-      input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMoney();
     while (reader.pos < end) {
@@ -249,11 +245,9 @@ export const Money: MessageFns<Money> = {
       amountMinor: isSet(object.amountMinor)
         ? globalThis.Number(object.amountMinor)
         : isSet(object.amount_minor)
-          ? globalThis.Number(object.amount_minor)
-          : 0,
-      currency: isSet(object.currency)
-        ? globalThis.String(object.currency)
-        : "",
+        ? globalThis.Number(object.amount_minor)
+        : 0,
+      currency: isSet(object.currency) ? globalThis.String(object.currency) : "",
     };
   },
 
@@ -279,24 +273,13 @@ export const Money: MessageFns<Money> = {
   },
 };
 
-type Builtin =
-  | Date
-  | Function
-  | Uint8Array
-  | string
-  | number
-  | boolean
-  | undefined;
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 
-export type DeepPartial<T> = T extends Builtin
-  ? T
-  : T extends globalThis.Array<infer U>
-    ? globalThis.Array<DeepPartial<U>>
-    : T extends ReadonlyArray<infer U>
-      ? ReadonlyArray<DeepPartial<U>>
-      : T extends {}
-        ? { [K in keyof T]?: DeepPartial<T[K]> }
-        : Partial<T>;
+export type DeepPartial<T> = T extends Builtin ? T
+  : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
+  : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
+  : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
+  : Partial<T>;
 
 function longToNumber(int64: { toString(): string }): number {
   const num = globalThis.Number(int64.toString());

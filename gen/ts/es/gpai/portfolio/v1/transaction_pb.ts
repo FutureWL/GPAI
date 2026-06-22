@@ -2,11 +2,7 @@
 // @generated from file gpai/portfolio/v1/transaction.proto (package gpai.portfolio.v1, syntax proto3)
 /* eslint-disable */
 
-import type {
-  GenEnum,
-  GenFile,
-  GenMessage,
-} from "@bufbuild/protobuf/codegenv2";
+import type { GenEnum, GenFile, GenMessage } from "@bufbuild/protobuf/codegenv2";
 import { enumDesc, fileDesc, messageDesc } from "@bufbuild/protobuf/codegenv2";
 import type { Timestamp } from "@bufbuild/protobuf/wkt";
 import { file_google_protobuf_timestamp } from "@bufbuild/protobuf/wkt";
@@ -15,12 +11,8 @@ import type { Message } from "@bufbuild/protobuf";
 /**
  * Describes the file gpai/portfolio/v1/transaction.proto.
  */
-export const file_gpai_portfolio_v1_transaction: GenFile =
-  /*@__PURE__*/
-  fileDesc(
-    "CiNncGFpL3BvcnRmb2xpby92MS90cmFuc2FjdGlvbi5wcm90bxIRZ3BhaS5wb3J0Zm9saW8udjEi2gEKC1RyYW5zYWN0aW9uEgoKAmlkGAEgASgJEhQKDHBvcnRmb2xpb19pZBgCIAEoCRIVCg1pbnN0cnVtZW50X2lkGAMgASgJEiUKBHNpZGUYBCABKA4yFy5ncGFpLnBvcnRmb2xpby52MS5TaWRlEhAKCHF1YW50aXR5GAUgASgDEg0KBXByaWNlGAYgASgJEgsKA2ZlZRgHIAEoCRIvCgtleGVjdXRlZF9hdBgIIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXASDAoEbm90ZRgJIAEoCSo5CgRTaWRlEhQKEFNJREVfVU5TUEVDSUZJRUQQABIMCghTSURFX0JVWRABEg0KCVNJREVfU0VMTBACYgZwcm90bzM",
-    [file_google_protobuf_timestamp],
-  );
+export const file_gpai_portfolio_v1_transaction: GenFile = /*@__PURE__*/
+  fileDesc("CiNncGFpL3BvcnRmb2xpby92MS90cmFuc2FjdGlvbi5wcm90bxIRZ3BhaS5wb3J0Zm9saW8udjEi2gEKC1RyYW5zYWN0aW9uEgoKAmlkGAEgASgJEhQKDHBvcnRmb2xpb19pZBgCIAEoCRIVCg1pbnN0cnVtZW50X2lkGAMgASgJEiUKBHNpZGUYBCABKA4yFy5ncGFpLnBvcnRmb2xpby52MS5TaWRlEhAKCHF1YW50aXR5GAUgASgDEg0KBXByaWNlGAYgASgJEgsKA2ZlZRgHIAEoCRIvCgtleGVjdXRlZF9hdBgIIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXASDAoEbm90ZRgJIAEoCSo5CgRTaWRlEhQKEFNJREVfVU5TUEVDSUZJRUQQABIMCghTSURFX0JVWRABEg0KCVNJREVfU0VMTBACQjNaMWdpdGh1Yi5jb20vRnV0dXJlV0wvR1BBSS9nZW4vZ28vZ3BhaS9wb3J0Zm9saW8vdjFiBnByb3RvMw", [file_google_protobuf_timestamp]);
 
 /**
  * @generated from message gpai.portfolio.v1.Transaction
@@ -78,8 +70,7 @@ export type Transaction = Message<"gpai.portfolio.v1.Transaction"> & {
  * Describes the message gpai.portfolio.v1.Transaction.
  * Use `create(TransactionSchema)` to create a new message.
  */
-export const TransactionSchema: GenMessage<Transaction> =
-  /*@__PURE__*/
+export const TransactionSchema: GenMessage<Transaction> = /*@__PURE__*/
   messageDesc(file_gpai_portfolio_v1_transaction, 0);
 
 /**
@@ -105,6 +96,6 @@ export enum Side {
 /**
  * Describes the enum gpai.portfolio.v1.Side.
  */
-export const SideSchema: GenEnum<Side> =
-  /*@__PURE__*/
+export const SideSchema: GenEnum<Side> = /*@__PURE__*/
   enumDesc(file_gpai_portfolio_v1_transaction, 0);
+

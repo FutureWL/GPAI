@@ -52,10 +52,7 @@ function createBaseInstrument(): Instrument {
 }
 
 export const Instrument: MessageFns<Instrument> = {
-  encode(
-    message: Instrument,
-    writer: BinaryWriter = new BinaryWriter(),
-  ): BinaryWriter {
+  encode(message: Instrument, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
     if (message.id !== "") {
       writer.uint32(10).string(message.id);
     }
@@ -90,17 +87,13 @@ export const Instrument: MessageFns<Instrument> = {
       writer.uint32(88).bool(message.delisted);
     }
     if (message.listedAt !== undefined) {
-      Timestamp.encode(
-        toTimestamp(message.listedAt),
-        writer.uint32(98).fork(),
-      ).join();
+      Timestamp.encode(toTimestamp(message.listedAt), writer.uint32(98).fork()).join();
     }
     return writer;
   },
 
   decode(input: BinaryReader | Uint8Array, length?: number): Instrument {
-    const reader =
-      input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseInstrument();
     while (reader.pos < end) {
@@ -199,9 +192,7 @@ export const Instrument: MessageFns<Instrument> = {
             break;
           }
 
-          message.listedAt = fromTimestamp(
-            Timestamp.decode(reader, reader.uint32()),
-          );
+          message.listedAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
           continue;
         }
       }
@@ -221,42 +212,36 @@ export const Instrument: MessageFns<Instrument> = {
       exchangeCode: isSet(object.exchangeCode)
         ? globalThis.String(object.exchangeCode)
         : isSet(object.exchange_code)
-          ? globalThis.String(object.exchange_code)
-          : "",
+        ? globalThis.String(object.exchange_code)
+        : "",
       nameZh: isSet(object.nameZh)
         ? globalThis.String(object.nameZh)
         : isSet(object.name_zh)
-          ? globalThis.String(object.name_zh)
-          : "",
+        ? globalThis.String(object.name_zh)
+        : "",
       nameEn: isSet(object.nameEn)
         ? globalThis.String(object.nameEn)
         : isSet(object.name_en)
-          ? globalThis.String(object.name_en)
-          : "",
+        ? globalThis.String(object.name_en)
+        : "",
       assetClass: isSet(object.assetClass)
         ? assetClassFromJSON(object.assetClass)
         : isSet(object.asset_class)
-          ? assetClassFromJSON(object.asset_class)
-          : 0,
-      currency: isSet(object.currency)
-        ? globalThis.String(object.currency)
-        : "",
-      timezone: isSet(object.timezone)
-        ? globalThis.String(object.timezone)
-        : "",
+        ? assetClassFromJSON(object.asset_class)
+        : 0,
+      currency: isSet(object.currency) ? globalThis.String(object.currency) : "",
+      timezone: isSet(object.timezone) ? globalThis.String(object.timezone) : "",
       lotSize: isSet(object.lotSize)
         ? globalThis.Number(object.lotSize)
         : isSet(object.lot_size)
-          ? globalThis.Number(object.lot_size)
-          : 0,
-      delisted: isSet(object.delisted)
-        ? globalThis.Boolean(object.delisted)
-        : false,
+        ? globalThis.Number(object.lot_size)
+        : 0,
+      delisted: isSet(object.delisted) ? globalThis.Boolean(object.delisted) : false,
       listedAt: isSet(object.listedAt)
         ? fromJsonTimestamp(object.listedAt)
         : isSet(object.listed_at)
-          ? fromJsonTimestamp(object.listed_at)
-          : undefined,
+        ? fromJsonTimestamp(object.listed_at)
+        : undefined,
     };
   },
 
@@ -322,24 +307,13 @@ export const Instrument: MessageFns<Instrument> = {
   },
 };
 
-type Builtin =
-  | Date
-  | Function
-  | Uint8Array
-  | string
-  | number
-  | boolean
-  | undefined;
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 
-export type DeepPartial<T> = T extends Builtin
-  ? T
-  : T extends globalThis.Array<infer U>
-    ? globalThis.Array<DeepPartial<U>>
-    : T extends ReadonlyArray<infer U>
-      ? ReadonlyArray<DeepPartial<U>>
-      : T extends {}
-        ? { [K in keyof T]?: DeepPartial<T[K]> }
-        : Partial<T>;
+export type DeepPartial<T> = T extends Builtin ? T
+  : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
+  : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
+  : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
+  : Partial<T>;
 
 function toTimestamp(date: Date): Timestamp {
   const seconds = Math.trunc(date.getTime() / 1_000);

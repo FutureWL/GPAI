@@ -101,24 +101,16 @@ function createBaseError(): Error {
 }
 
 export const Error: MessageFns<Error> = {
-  encode(
-    message: Error,
-    writer: BinaryWriter = new BinaryWriter(),
-  ): BinaryWriter {
+  encode(message: Error, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
     if (message.code !== 0) {
       writer.uint32(8).int32(message.code);
     }
     if (message.message !== "") {
       writer.uint32(18).string(message.message);
     }
-    globalThis.Object.entries(message.details).forEach(
-      ([key, value]: [string, string]) => {
-        Error_DetailsEntry.encode(
-          { key: key as any, value },
-          writer.uint32(26).fork(),
-        ).join();
-      },
-    );
+    globalThis.Object.entries(message.details).forEach(([key, value]: [string, string]) => {
+      Error_DetailsEntry.encode({ key: key as any, value }, writer.uint32(26).fork()).join();
+    });
     if (message.requestId !== "") {
       writer.uint32(34).string(message.requestId);
     }
@@ -126,8 +118,7 @@ export const Error: MessageFns<Error> = {
   },
 
   decode(input: BinaryReader | Uint8Array, length?: number): Error {
-    const reader =
-      input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseError();
     while (reader.pos < end) {
@@ -183,18 +174,18 @@ export const Error: MessageFns<Error> = {
       message: isSet(object.message) ? globalThis.String(object.message) : "",
       details: isObject(object.details)
         ? (globalThis.Object.entries(object.details) as [string, any][]).reduce(
-            (acc: { [key: string]: string }, [key, value]: [string, any]) => {
-              acc[key] = globalThis.String(value);
-              return acc;
-            },
-            {},
-          )
+          (acc: { [key: string]: string }, [key, value]: [string, any]) => {
+            acc[key] = globalThis.String(value);
+            return acc;
+          },
+          {},
+        )
         : {},
       requestId: isSet(object.requestId)
         ? globalThis.String(object.requestId)
         : isSet(object.request_id)
-          ? globalThis.String(object.request_id)
-          : "",
+        ? globalThis.String(object.request_id)
+        : "",
     };
   },
 
@@ -207,10 +198,7 @@ export const Error: MessageFns<Error> = {
       obj.message = message.message;
     }
     if (message.details) {
-      const entries = globalThis.Object.entries(message.details) as [
-        string,
-        string,
-      ][];
+      const entries = globalThis.Object.entries(message.details) as [string, string][];
       if (entries.length > 0) {
         obj.details = {};
         entries.forEach(([k, v]) => {
@@ -231,9 +219,7 @@ export const Error: MessageFns<Error> = {
     const message = createBaseError();
     message.code = object.code ?? 0;
     message.message = object.message ?? "";
-    message.details = (
-      globalThis.Object.entries(object.details ?? {}) as [string, string][]
-    ).reduce(
+    message.details = (globalThis.Object.entries(object.details ?? {}) as [string, string][]).reduce(
       (acc: { [key: string]: string }, [key, value]: [string, string]) => {
         if (value !== undefined) {
           acc[key] = globalThis.String(value);
@@ -252,10 +238,7 @@ function createBaseError_DetailsEntry(): Error_DetailsEntry {
 }
 
 export const Error_DetailsEntry: MessageFns<Error_DetailsEntry> = {
-  encode(
-    message: Error_DetailsEntry,
-    writer: BinaryWriter = new BinaryWriter(),
-  ): BinaryWriter {
+  encode(message: Error_DetailsEntry, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
     if (message.key !== "") {
       writer.uint32(10).string(message.key);
     }
@@ -265,12 +248,8 @@ export const Error_DetailsEntry: MessageFns<Error_DetailsEntry> = {
     return writer;
   },
 
-  decode(
-    input: BinaryReader | Uint8Array,
-    length?: number,
-  ): Error_DetailsEntry {
-    const reader =
-      input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): Error_DetailsEntry {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseError_DetailsEntry();
     while (reader.pos < end) {
@@ -330,24 +309,13 @@ export const Error_DetailsEntry: MessageFns<Error_DetailsEntry> = {
   },
 };
 
-type Builtin =
-  | Date
-  | Function
-  | Uint8Array
-  | string
-  | number
-  | boolean
-  | undefined;
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 
-export type DeepPartial<T> = T extends Builtin
-  ? T
-  : T extends globalThis.Array<infer U>
-    ? globalThis.Array<DeepPartial<U>>
-    : T extends ReadonlyArray<infer U>
-      ? ReadonlyArray<DeepPartial<U>>
-      : T extends {}
-        ? { [K in keyof T]?: DeepPartial<T[K]> }
-        : Partial<T>;
+export type DeepPartial<T> = T extends Builtin ? T
+  : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
+  : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
+  : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
+  : Partial<T>;
 
 function isObject(value: any): boolean {
   return typeof value === "object" && value !== null;

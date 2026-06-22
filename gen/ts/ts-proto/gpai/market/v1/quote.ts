@@ -41,10 +41,7 @@ function createBaseQuote(): Quote {
 }
 
 export const Quote: MessageFns<Quote> = {
-  encode(
-    message: Quote,
-    writer: BinaryWriter = new BinaryWriter(),
-  ): BinaryWriter {
+  encode(message: Quote, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
     if (message.instrumentId !== "") {
       writer.uint32(10).string(message.instrumentId);
     }
@@ -76,17 +73,13 @@ export const Quote: MessageFns<Quote> = {
       writer.uint32(81).double(message.changePct);
     }
     if (message.ts !== undefined) {
-      Timestamp.encode(
-        toTimestamp(message.ts),
-        writer.uint32(90).fork(),
-      ).join();
+      Timestamp.encode(toTimestamp(message.ts), writer.uint32(90).fork()).join();
     }
     return writer;
   },
 
   decode(input: BinaryReader | Uint8Array, length?: number): Quote {
-    const reader =
-      input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQuote();
     while (reader.pos < end) {
@@ -194,29 +187,29 @@ export const Quote: MessageFns<Quote> = {
       instrumentId: isSet(object.instrumentId)
         ? globalThis.String(object.instrumentId)
         : isSet(object.instrument_id)
-          ? globalThis.String(object.instrument_id)
-          : "",
+        ? globalThis.String(object.instrument_id)
+        : "",
       lastPrice: isSet(object.lastPrice)
         ? globalThis.Number(object.lastPrice)
         : isSet(object.last_price)
-          ? globalThis.Number(object.last_price)
-          : 0,
+        ? globalThis.Number(object.last_price)
+        : 0,
       open: isSet(object.open) ? globalThis.Number(object.open) : 0,
       high: isSet(object.high) ? globalThis.Number(object.high) : 0,
       low: isSet(object.low) ? globalThis.Number(object.low) : 0,
       prevClose: isSet(object.prevClose)
         ? globalThis.Number(object.prevClose)
         : isSet(object.prev_close)
-          ? globalThis.Number(object.prev_close)
-          : 0,
+        ? globalThis.Number(object.prev_close)
+        : 0,
       volume: isSet(object.volume) ? globalThis.Number(object.volume) : 0,
       turnover: isSet(object.turnover) ? globalThis.Number(object.turnover) : 0,
       change: isSet(object.change) ? globalThis.Number(object.change) : 0,
       changePct: isSet(object.changePct)
         ? globalThis.Number(object.changePct)
         : isSet(object.change_pct)
-          ? globalThis.Number(object.change_pct)
-          : 0,
+        ? globalThis.Number(object.change_pct)
+        : 0,
       ts: isSet(object.ts) ? fromJsonTimestamp(object.ts) : undefined,
     };
   },
@@ -279,24 +272,13 @@ export const Quote: MessageFns<Quote> = {
   },
 };
 
-type Builtin =
-  | Date
-  | Function
-  | Uint8Array
-  | string
-  | number
-  | boolean
-  | undefined;
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 
-export type DeepPartial<T> = T extends Builtin
-  ? T
-  : T extends globalThis.Array<infer U>
-    ? globalThis.Array<DeepPartial<U>>
-    : T extends ReadonlyArray<infer U>
-      ? ReadonlyArray<DeepPartial<U>>
-      : T extends {}
-        ? { [K in keyof T]?: DeepPartial<T[K]> }
-        : Partial<T>;
+export type DeepPartial<T> = T extends Builtin ? T
+  : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
+  : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
+  : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
+  : Partial<T>;
 
 function toTimestamp(date: Date): Timestamp {
   const seconds = Math.trunc(date.getTime() / 1_000);

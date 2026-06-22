@@ -4,9 +4,11 @@
 
 ## 状态
 
-**Phase 0 — 骨架阶段**(规划中)
+**Phase 0 — 骨架阶段** ✅ 已完成(2026-06-22)
 
-仓库目前只包含**设计文档**。代码脚手架、proto 契约、CI 配置等将在实现计划通过后逐步落地。
+骨架阶段交付完成。详细验收见 [DoD checklist](docs/superpowers/specs/2026-06-22-skeleton-dod-checklist.md)。
+
+**全栈 `pnpm dev` 可启,`./deploy/install.sh` 可装生产形态。AAPL 实时报价流通。**
 
 ## 文档
 

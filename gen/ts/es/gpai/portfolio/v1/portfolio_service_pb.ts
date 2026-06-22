@@ -2,16 +2,8 @@
 // @generated from file gpai/portfolio/v1/portfolio_service.proto (package gpai.portfolio.v1, syntax proto3)
 /* eslint-disable */
 
-import type {
-  GenFile,
-  GenMessage,
-  GenService,
-} from "@bufbuild/protobuf/codegenv2";
-import {
-  fileDesc,
-  messageDesc,
-  serviceDesc,
-} from "@bufbuild/protobuf/codegenv2";
+import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv2";
+import { fileDesc, messageDesc, serviceDesc } from "@bufbuild/protobuf/codegenv2";
 import type { Position } from "./position_pb.ts";
 import { file_gpai_portfolio_v1_position } from "./position_pb.ts";
 import type { Transaction } from "./transaction_pb.ts";
@@ -21,87 +13,75 @@ import type { Message } from "@bufbuild/protobuf";
 /**
  * Describes the file gpai/portfolio/v1/portfolio_service.proto.
  */
-export const file_gpai_portfolio_v1_portfolio_service: GenFile =
-  /*@__PURE__*/
-  fileDesc(
-    "CilncGFpL3BvcnRmb2xpby92MS9wb3J0Zm9saW9fc2VydmljZS5wcm90bxIRZ3BhaS5wb3J0Zm9saW8udjEiLAoUTGlzdFBvc2l0aW9uc1JlcXVlc3QSFAoMcG9ydGZvbGlvX2lkGAEgASgJIkcKFUxpc3RQb3NpdGlvbnNSZXNwb25zZRIuCglwb3NpdGlvbnMYASADKAsyGy5ncGFpLnBvcnRmb2xpby52MS5Qb3NpdGlvbiJPChhSZWNvcmRUcmFuc2FjdGlvblJlcXVlc3QSMwoLdHJhbnNhY3Rpb24YASABKAsyHi5ncGFpLnBvcnRmb2xpby52MS5UcmFuc2FjdGlvbiInChlSZWNvcmRUcmFuc2FjdGlvblJlc3BvbnNlEgoKAmlkGAEgASgJMuYBChBQb3J0Zm9saW9TZXJ2aWNlEmIKDUxpc3RQb3NpdGlvbnMSJy5ncGFpLnBvcnRmb2xpby52MS5MaXN0UG9zaXRpb25zUmVxdWVzdBooLmdwYWkucG9ydGZvbGlvLnYxLkxpc3RQb3NpdGlvbnNSZXNwb25zZRJuChFSZWNvcmRUcmFuc2FjdGlvbhIrLmdwYWkucG9ydGZvbGlvLnYxLlJlY29yZFRyYW5zYWN0aW9uUmVxdWVzdBosLmdwYWkucG9ydGZvbGlvLnYxLlJlY29yZFRyYW5zYWN0aW9uUmVzcG9uc2ViBnByb3RvMw",
-    [file_gpai_portfolio_v1_position, file_gpai_portfolio_v1_transaction],
-  );
+export const file_gpai_portfolio_v1_portfolio_service: GenFile = /*@__PURE__*/
+  fileDesc("CilncGFpL3BvcnRmb2xpby92MS9wb3J0Zm9saW9fc2VydmljZS5wcm90bxIRZ3BhaS5wb3J0Zm9saW8udjEiLAoUTGlzdFBvc2l0aW9uc1JlcXVlc3QSFAoMcG9ydGZvbGlvX2lkGAEgASgJIkcKFUxpc3RQb3NpdGlvbnNSZXNwb25zZRIuCglwb3NpdGlvbnMYASADKAsyGy5ncGFpLnBvcnRmb2xpby52MS5Qb3NpdGlvbiJPChhSZWNvcmRUcmFuc2FjdGlvblJlcXVlc3QSMwoLdHJhbnNhY3Rpb24YASABKAsyHi5ncGFpLnBvcnRmb2xpby52MS5UcmFuc2FjdGlvbiInChlSZWNvcmRUcmFuc2FjdGlvblJlc3BvbnNlEgoKAmlkGAEgASgJMuYBChBQb3J0Zm9saW9TZXJ2aWNlEmIKDUxpc3RQb3NpdGlvbnMSJy5ncGFpLnBvcnRmb2xpby52MS5MaXN0UG9zaXRpb25zUmVxdWVzdBooLmdwYWkucG9ydGZvbGlvLnYxLkxpc3RQb3NpdGlvbnNSZXNwb25zZRJuChFSZWNvcmRUcmFuc2FjdGlvbhIrLmdwYWkucG9ydGZvbGlvLnYxLlJlY29yZFRyYW5zYWN0aW9uUmVxdWVzdBosLmdwYWkucG9ydGZvbGlvLnYxLlJlY29yZFRyYW5zYWN0aW9uUmVzcG9uc2VCM1oxZ2l0aHViLmNvbS9GdXR1cmVXTC9HUEFJL2dlbi9nby9ncGFpL3BvcnRmb2xpby92MWIGcHJvdG8z", [file_gpai_portfolio_v1_position, file_gpai_portfolio_v1_transaction]);
 
 /**
  * @generated from message gpai.portfolio.v1.ListPositionsRequest
  */
-export type ListPositionsRequest =
-  Message<"gpai.portfolio.v1.ListPositionsRequest"> & {
-    /**
-     * @generated from field: string portfolio_id = 1;
-     */
-    portfolioId: string;
-  };
+export type ListPositionsRequest = Message<"gpai.portfolio.v1.ListPositionsRequest"> & {
+  /**
+   * @generated from field: string portfolio_id = 1;
+   */
+  portfolioId: string;
+};
 
 /**
  * Describes the message gpai.portfolio.v1.ListPositionsRequest.
  * Use `create(ListPositionsRequestSchema)` to create a new message.
  */
-export const ListPositionsRequestSchema: GenMessage<ListPositionsRequest> =
-  /*@__PURE__*/
+export const ListPositionsRequestSchema: GenMessage<ListPositionsRequest> = /*@__PURE__*/
   messageDesc(file_gpai_portfolio_v1_portfolio_service, 0);
 
 /**
  * @generated from message gpai.portfolio.v1.ListPositionsResponse
  */
-export type ListPositionsResponse =
-  Message<"gpai.portfolio.v1.ListPositionsResponse"> & {
-    /**
-     * @generated from field: repeated gpai.portfolio.v1.Position positions = 1;
-     */
-    positions: Position[];
-  };
+export type ListPositionsResponse = Message<"gpai.portfolio.v1.ListPositionsResponse"> & {
+  /**
+   * @generated from field: repeated gpai.portfolio.v1.Position positions = 1;
+   */
+  positions: Position[];
+};
 
 /**
  * Describes the message gpai.portfolio.v1.ListPositionsResponse.
  * Use `create(ListPositionsResponseSchema)` to create a new message.
  */
-export const ListPositionsResponseSchema: GenMessage<ListPositionsResponse> =
-  /*@__PURE__*/
+export const ListPositionsResponseSchema: GenMessage<ListPositionsResponse> = /*@__PURE__*/
   messageDesc(file_gpai_portfolio_v1_portfolio_service, 1);
 
 /**
  * @generated from message gpai.portfolio.v1.RecordTransactionRequest
  */
-export type RecordTransactionRequest =
-  Message<"gpai.portfolio.v1.RecordTransactionRequest"> & {
-    /**
-     * @generated from field: gpai.portfolio.v1.Transaction transaction = 1;
-     */
-    transaction?: Transaction | undefined;
-  };
+export type RecordTransactionRequest = Message<"gpai.portfolio.v1.RecordTransactionRequest"> & {
+  /**
+   * @generated from field: gpai.portfolio.v1.Transaction transaction = 1;
+   */
+  transaction?: Transaction | undefined;
+};
 
 /**
  * Describes the message gpai.portfolio.v1.RecordTransactionRequest.
  * Use `create(RecordTransactionRequestSchema)` to create a new message.
  */
-export const RecordTransactionRequestSchema: GenMessage<RecordTransactionRequest> =
-  /*@__PURE__*/
+export const RecordTransactionRequestSchema: GenMessage<RecordTransactionRequest> = /*@__PURE__*/
   messageDesc(file_gpai_portfolio_v1_portfolio_service, 2);
 
 /**
  * @generated from message gpai.portfolio.v1.RecordTransactionResponse
  */
-export type RecordTransactionResponse =
-  Message<"gpai.portfolio.v1.RecordTransactionResponse"> & {
-    /**
-     * @generated from field: string id = 1;
-     */
-    id: string;
-  };
+export type RecordTransactionResponse = Message<"gpai.portfolio.v1.RecordTransactionResponse"> & {
+  /**
+   * @generated from field: string id = 1;
+   */
+  id: string;
+};
 
 /**
  * Describes the message gpai.portfolio.v1.RecordTransactionResponse.
  * Use `create(RecordTransactionResponseSchema)` to create a new message.
  */
-export const RecordTransactionResponseSchema: GenMessage<RecordTransactionResponse> =
-  /*@__PURE__*/
+export const RecordTransactionResponseSchema: GenMessage<RecordTransactionResponse> = /*@__PURE__*/
   messageDesc(file_gpai_portfolio_v1_portfolio_service, 3);
 
 /**
@@ -117,7 +97,7 @@ export const PortfolioService: GenService<{
     methodKind: "unary";
     input: typeof ListPositionsRequestSchema;
     output: typeof ListPositionsResponseSchema;
-  };
+  },
   /**
    * @generated from rpc gpai.portfolio.v1.PortfolioService.RecordTransaction
    */
@@ -125,5 +105,7 @@ export const PortfolioService: GenService<{
     methodKind: "unary";
     input: typeof RecordTransactionRequestSchema;
     output: typeof RecordTransactionResponseSchema;
-  };
-}> = /*@__PURE__*/ serviceDesc(file_gpai_portfolio_v1_portfolio_service, 0);
+  },
+}> = /*@__PURE__*/
+  serviceDesc(file_gpai_portfolio_v1_portfolio_service, 0);
+

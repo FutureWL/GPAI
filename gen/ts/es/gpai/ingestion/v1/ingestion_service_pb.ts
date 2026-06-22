@@ -2,16 +2,8 @@
 // @generated from file gpai/ingestion/v1/ingestion_service.proto (package gpai.ingestion.v1, syntax proto3)
 /* eslint-disable */
 
-import type {
-  GenFile,
-  GenMessage,
-  GenService,
-} from "@bufbuild/protobuf/codegenv2";
-import {
-  fileDesc,
-  messageDesc,
-  serviceDesc,
-} from "@bufbuild/protobuf/codegenv2";
+import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv2";
+import { fileDesc, messageDesc, serviceDesc } from "@bufbuild/protobuf/codegenv2";
 import type { IngestionJob } from "./job_pb.ts";
 import { file_gpai_ingestion_v1_job } from "./job_pb.ts";
 import type { Message } from "@bufbuild/protobuf";
@@ -19,24 +11,20 @@ import type { Message } from "@bufbuild/protobuf";
 /**
  * Describes the file gpai/ingestion/v1/ingestion_service.proto.
  */
-export const file_gpai_ingestion_v1_ingestion_service: GenFile =
-  /*@__PURE__*/
-  fileDesc(
-    "CilncGFpL2luZ2VzdGlvbi92MS9pbmdlc3Rpb25fc2VydmljZS5wcm90bxIRZ3BhaS5pbmdlc3Rpb24udjEiEQoPTGlzdEpvYnNSZXF1ZXN0IkEKEExpc3RKb2JzUmVzcG9uc2USLQoEam9icxgBIAMoCzIfLmdwYWkuaW5nZXN0aW9uLnYxLkluZ2VzdGlvbkpvYiIjChFUcmlnZ2VySm9iUmVxdWVzdBIOCgZqb2JfaWQYASABKAMiJAoSVHJpZ2dlckpvYlJlc3BvbnNlEg4KBnJ1bl9pZBgBIAEoAzLCAQoQSW5nZXN0aW9uU2VydmljZRJTCghMaXN0Sm9icxIiLmdwYWkuaW5nZXN0aW9uLnYxLkxpc3RKb2JzUmVxdWVzdBojLmdwYWkuaW5nZXN0aW9uLnYxLkxpc3RKb2JzUmVzcG9uc2USWQoKVHJpZ2dlckpvYhIkLmdwYWkuaW5nZXN0aW9uLnYxLlRyaWdnZXJKb2JSZXF1ZXN0GiUuZ3BhaS5pbmdlc3Rpb24udjEuVHJpZ2dlckpvYlJlc3BvbnNlYgZwcm90bzM",
-    [file_gpai_ingestion_v1_job],
-  );
+export const file_gpai_ingestion_v1_ingestion_service: GenFile = /*@__PURE__*/
+  fileDesc("CilncGFpL2luZ2VzdGlvbi92MS9pbmdlc3Rpb25fc2VydmljZS5wcm90bxIRZ3BhaS5pbmdlc3Rpb24udjEiEQoPTGlzdEpvYnNSZXF1ZXN0IkEKEExpc3RKb2JzUmVzcG9uc2USLQoEam9icxgBIAMoCzIfLmdwYWkuaW5nZXN0aW9uLnYxLkluZ2VzdGlvbkpvYiIjChFUcmlnZ2VySm9iUmVxdWVzdBIOCgZqb2JfaWQYASABKAMiJAoSVHJpZ2dlckpvYlJlc3BvbnNlEg4KBnJ1bl9pZBgBIAEoAzLCAQoQSW5nZXN0aW9uU2VydmljZRJTCghMaXN0Sm9icxIiLmdwYWkuaW5nZXN0aW9uLnYxLkxpc3RKb2JzUmVxdWVzdBojLmdwYWkuaW5nZXN0aW9uLnYxLkxpc3RKb2JzUmVzcG9uc2USWQoKVHJpZ2dlckpvYhIkLmdwYWkuaW5nZXN0aW9uLnYxLlRyaWdnZXJKb2JSZXF1ZXN0GiUuZ3BhaS5pbmdlc3Rpb24udjEuVHJpZ2dlckpvYlJlc3BvbnNlQjNaMWdpdGh1Yi5jb20vRnV0dXJlV0wvR1BBSS9nZW4vZ28vZ3BhaS9pbmdlc3Rpb24vdjFiBnByb3RvMw", [file_gpai_ingestion_v1_job]);
 
 /**
  * @generated from message gpai.ingestion.v1.ListJobsRequest
  */
-export type ListJobsRequest = Message<"gpai.ingestion.v1.ListJobsRequest"> & {};
+export type ListJobsRequest = Message<"gpai.ingestion.v1.ListJobsRequest"> & {
+};
 
 /**
  * Describes the message gpai.ingestion.v1.ListJobsRequest.
  * Use `create(ListJobsRequestSchema)` to create a new message.
  */
-export const ListJobsRequestSchema: GenMessage<ListJobsRequest> =
-  /*@__PURE__*/
+export const ListJobsRequestSchema: GenMessage<ListJobsRequest> = /*@__PURE__*/
   messageDesc(file_gpai_ingestion_v1_ingestion_service, 0);
 
 /**
@@ -53,46 +41,41 @@ export type ListJobsResponse = Message<"gpai.ingestion.v1.ListJobsResponse"> & {
  * Describes the message gpai.ingestion.v1.ListJobsResponse.
  * Use `create(ListJobsResponseSchema)` to create a new message.
  */
-export const ListJobsResponseSchema: GenMessage<ListJobsResponse> =
-  /*@__PURE__*/
+export const ListJobsResponseSchema: GenMessage<ListJobsResponse> = /*@__PURE__*/
   messageDesc(file_gpai_ingestion_v1_ingestion_service, 1);
 
 /**
  * @generated from message gpai.ingestion.v1.TriggerJobRequest
  */
-export type TriggerJobRequest =
-  Message<"gpai.ingestion.v1.TriggerJobRequest"> & {
-    /**
-     * @generated from field: int64 job_id = 1;
-     */
-    jobId: bigint;
-  };
+export type TriggerJobRequest = Message<"gpai.ingestion.v1.TriggerJobRequest"> & {
+  /**
+   * @generated from field: int64 job_id = 1;
+   */
+  jobId: bigint;
+};
 
 /**
  * Describes the message gpai.ingestion.v1.TriggerJobRequest.
  * Use `create(TriggerJobRequestSchema)` to create a new message.
  */
-export const TriggerJobRequestSchema: GenMessage<TriggerJobRequest> =
-  /*@__PURE__*/
+export const TriggerJobRequestSchema: GenMessage<TriggerJobRequest> = /*@__PURE__*/
   messageDesc(file_gpai_ingestion_v1_ingestion_service, 2);
 
 /**
  * @generated from message gpai.ingestion.v1.TriggerJobResponse
  */
-export type TriggerJobResponse =
-  Message<"gpai.ingestion.v1.TriggerJobResponse"> & {
-    /**
-     * @generated from field: int64 run_id = 1;
-     */
-    runId: bigint;
-  };
+export type TriggerJobResponse = Message<"gpai.ingestion.v1.TriggerJobResponse"> & {
+  /**
+   * @generated from field: int64 run_id = 1;
+   */
+  runId: bigint;
+};
 
 /**
  * Describes the message gpai.ingestion.v1.TriggerJobResponse.
  * Use `create(TriggerJobResponseSchema)` to create a new message.
  */
-export const TriggerJobResponseSchema: GenMessage<TriggerJobResponse> =
-  /*@__PURE__*/
+export const TriggerJobResponseSchema: GenMessage<TriggerJobResponse> = /*@__PURE__*/
   messageDesc(file_gpai_ingestion_v1_ingestion_service, 3);
 
 /**
@@ -108,7 +91,7 @@ export const IngestionService: GenService<{
     methodKind: "unary";
     input: typeof ListJobsRequestSchema;
     output: typeof ListJobsResponseSchema;
-  };
+  },
   /**
    * @generated from rpc gpai.ingestion.v1.IngestionService.TriggerJob
    */
@@ -116,5 +99,7 @@ export const IngestionService: GenService<{
     methodKind: "unary";
     input: typeof TriggerJobRequestSchema;
     output: typeof TriggerJobResponseSchema;
-  };
-}> = /*@__PURE__*/ serviceDesc(file_gpai_ingestion_v1_ingestion_service, 0);
+  },
+}> = /*@__PURE__*/
+  serviceDesc(file_gpai_ingestion_v1_ingestion_service, 0);
+

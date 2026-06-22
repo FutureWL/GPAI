@@ -3,14 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import {
-  GetQuoteRequest,
-  GetQuoteResponse,
-  ListInstrumentsRequest,
-  ListInstrumentsResponse,
-  UpsertLatestQuoteRequest,
-  UpsertLatestQuoteResponse,
-} from "./market_data_service_pbts";
+import { GetQuoteRequest, GetQuoteResponse, ListInstrumentsRequest, ListInstrumentsResponse, UpsertLatestQuoteRequest, UpsertLatestQuoteResponse } from "./market_data_service_pbts";
 import { MethodKind } from "@bufbuild/protobuf";
 
 /**
@@ -46,5 +39,6 @@ export const MarketDataService = {
       O: ListInstrumentsResponse,
       kind: MethodKind.Unary,
     },
-  },
+  }
 } as const;
+

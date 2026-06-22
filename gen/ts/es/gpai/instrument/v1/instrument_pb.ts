@@ -13,12 +13,8 @@ import type { Message } from "@bufbuild/protobuf";
 /**
  * Describes the file gpai/instrument/v1/instrument.proto.
  */
-export const file_gpai_instrument_v1_instrument: GenFile =
-  /*@__PURE__*/
-  fileDesc(
-    "CiNncGFpL2luc3RydW1lbnQvdjEvaW5zdHJ1bWVudC5wcm90bxISZ3BhaS5pbnN0cnVtZW50LnYxIrECCgpJbnN0cnVtZW50EgoKAmlkGAEgASgJEiYKBm1hcmtldBgCIAEoDjIWLmdwYWkuY29tbW9uLnYxLk1hcmtldBIOCgZzeW1ib2wYAyABKAkSFQoNZXhjaGFuZ2VfY29kZRgEIAEoCRIPCgduYW1lX3poGAUgASgJEg8KB25hbWVfZW4YBiABKAkSLwoLYXNzZXRfY2xhc3MYByABKA4yGi5ncGFpLmNvbW1vbi52MS5Bc3NldENsYXNzEhAKCGN1cnJlbmN5GAggASgJEhAKCHRpbWV6b25lGAkgASgJEhAKCGxvdF9zaXplGAogASgFEhAKCGRlbGlzdGVkGAsgASgIEi0KCWxpc3RlZF9hdBgMIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXBiBnByb3RvMw",
-    [file_google_protobuf_timestamp, file_gpai_common_v1_types],
-  );
+export const file_gpai_instrument_v1_instrument: GenFile = /*@__PURE__*/
+  fileDesc("CiNncGFpL2luc3RydW1lbnQvdjEvaW5zdHJ1bWVudC5wcm90bxISZ3BhaS5pbnN0cnVtZW50LnYxIrECCgpJbnN0cnVtZW50EgoKAmlkGAEgASgJEiYKBm1hcmtldBgCIAEoDjIWLmdwYWkuY29tbW9uLnYxLk1hcmtldBIOCgZzeW1ib2wYAyABKAkSFQoNZXhjaGFuZ2VfY29kZRgEIAEoCRIPCgduYW1lX3poGAUgASgJEg8KB25hbWVfZW4YBiABKAkSLwoLYXNzZXRfY2xhc3MYByABKA4yGi5ncGFpLmNvbW1vbi52MS5Bc3NldENsYXNzEhAKCGN1cnJlbmN5GAggASgJEhAKCHRpbWV6b25lGAkgASgJEhAKCGxvdF9zaXplGAogASgFEhAKCGRlbGlzdGVkGAsgASgIEi0KCWxpc3RlZF9hdBgMIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXBCNFoyZ2l0aHViLmNvbS9GdXR1cmVXTC9HUEFJL2dlbi9nby9ncGFpL2luc3RydW1lbnQvdjFiBnByb3RvMw", [file_google_protobuf_timestamp, file_gpai_common_v1_types]);
 
 /**
  * @generated from message gpai.instrument.v1.Instrument
@@ -91,6 +87,6 @@ export type Instrument = Message<"gpai.instrument.v1.Instrument"> & {
  * Describes the message gpai.instrument.v1.Instrument.
  * Use `create(InstrumentSchema)` to create a new message.
  */
-export const InstrumentSchema: GenMessage<Instrument> =
-  /*@__PURE__*/
+export const InstrumentSchema: GenMessage<Instrument> = /*@__PURE__*/
   messageDesc(file_gpai_instrument_v1_instrument, 0);
+

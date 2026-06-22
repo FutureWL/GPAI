@@ -29,10 +29,7 @@ function createBaseTradingSession(): TradingSession {
 }
 
 export const TradingSession: MessageFns<TradingSession> = {
-  encode(
-    message: TradingSession,
-    writer: BinaryWriter = new BinaryWriter(),
-  ): BinaryWriter {
+  encode(message: TradingSession, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
     if (message.open !== "") {
       writer.uint32(10).string(message.open);
     }
@@ -43,8 +40,7 @@ export const TradingSession: MessageFns<TradingSession> = {
   },
 
   decode(input: BinaryReader | Uint8Array, length?: number): TradingSession {
-    const reader =
-      input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseTradingSession();
     while (reader.pos < end) {
@@ -109,10 +105,7 @@ function createBaseMarketCalendar(): MarketCalendar {
 }
 
 export const MarketCalendar: MessageFns<MarketCalendar> = {
-  encode(
-    message: MarketCalendar,
-    writer: BinaryWriter = new BinaryWriter(),
-  ): BinaryWriter {
+  encode(message: MarketCalendar, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
     if (message.market !== 0) {
       writer.uint32(8).uint32(message.market);
     }
@@ -129,8 +122,7 @@ export const MarketCalendar: MessageFns<MarketCalendar> = {
   },
 
   decode(input: BinaryReader | Uint8Array, length?: number): MarketCalendar {
-    const reader =
-      input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMarketCalendar();
     while (reader.pos < end) {
@@ -184,8 +176,8 @@ export const MarketCalendar: MessageFns<MarketCalendar> = {
       isTradingDay: isSet(object.isTradingDay)
         ? globalThis.Boolean(object.isTradingDay)
         : isSet(object.is_trading_day)
-          ? globalThis.Boolean(object.is_trading_day)
-          : false,
+        ? globalThis.Boolean(object.is_trading_day)
+        : false,
       sessions: globalThis.Array.isArray(object?.sessions)
         ? object.sessions.map((e: any) => TradingSession.fromJSON(e))
         : [],
@@ -217,30 +209,18 @@ export const MarketCalendar: MessageFns<MarketCalendar> = {
     message.market = object.market ?? 0;
     message.date = object.date ?? "";
     message.isTradingDay = object.isTradingDay ?? false;
-    message.sessions =
-      object.sessions?.map((e) => TradingSession.fromPartial(e)) || [];
+    message.sessions = object.sessions?.map((e) => TradingSession.fromPartial(e)) || [];
     return message;
   },
 };
 
-type Builtin =
-  | Date
-  | Function
-  | Uint8Array
-  | string
-  | number
-  | boolean
-  | undefined;
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 
-export type DeepPartial<T> = T extends Builtin
-  ? T
-  : T extends globalThis.Array<infer U>
-    ? globalThis.Array<DeepPartial<U>>
-    : T extends ReadonlyArray<infer U>
-      ? ReadonlyArray<DeepPartial<U>>
-      : T extends {}
-        ? { [K in keyof T]?: DeepPartial<T[K]> }
-        : Partial<T>;
+export type DeepPartial<T> = T extends Builtin ? T
+  : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
+  : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
+  : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
+  : Partial<T>;
 
 function isSet(value: any): boolean {
   return value !== null && value !== undefined;

@@ -13,12 +13,8 @@ import type { Message } from "@bufbuild/protobuf";
 /**
  * Describes the file gpai/ingestion/v1/job.proto.
  */
-export const file_gpai_ingestion_v1_job: GenFile =
-  /*@__PURE__*/
-  fileDesc(
-    "ChtncGFpL2luZ2VzdGlvbi92MS9qb2IucHJvdG8SEWdwYWkuaW5nZXN0aW9uLnYxItUBCgxJbmdlc3Rpb25Kb2ISCgoCaWQYASABKAMSEQoJc291cmNlX2lkGAIgASgJEiYKBm1hcmtldBgDIAEoDjIWLmdwYWkuY29tbW9uLnYxLk1hcmtldBIVCg1pbnN0cnVtZW50X2lkGAQgASgJEhAKCHNjaGVkdWxlGAUgASgJEg8KB2VuYWJsZWQYBiABKAgSLwoLbGFzdF9ydW5fYXQYByABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wEhMKC2xhc3Rfc3RhdHVzGAggASgFYgZwcm90bzM",
-    [file_google_protobuf_timestamp, file_gpai_common_v1_types],
-  );
+export const file_gpai_ingestion_v1_job: GenFile = /*@__PURE__*/
+  fileDesc("ChtncGFpL2luZ2VzdGlvbi92MS9qb2IucHJvdG8SEWdwYWkuaW5nZXN0aW9uLnYxItUBCgxJbmdlc3Rpb25Kb2ISCgoCaWQYASABKAMSEQoJc291cmNlX2lkGAIgASgJEiYKBm1hcmtldBgDIAEoDjIWLmdwYWkuY29tbW9uLnYxLk1hcmtldBIVCg1pbnN0cnVtZW50X2lkGAQgASgJEhAKCHNjaGVkdWxlGAUgASgJEg8KB2VuYWJsZWQYBiABKAgSLwoLbGFzdF9ydW5fYXQYByABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wEhMKC2xhc3Rfc3RhdHVzGAggASgFQjNaMWdpdGh1Yi5jb20vRnV0dXJlV0wvR1BBSS9nZW4vZ28vZ3BhaS9pbmdlc3Rpb24vdjFiBnByb3RvMw", [file_google_protobuf_timestamp, file_gpai_common_v1_types]);
 
 /**
  * @generated from message gpai.ingestion.v1.IngestionJob
@@ -73,6 +69,6 @@ export type IngestionJob = Message<"gpai.ingestion.v1.IngestionJob"> & {
  * Describes the message gpai.ingestion.v1.IngestionJob.
  * Use `create(IngestionJobSchema)` to create a new message.
  */
-export const IngestionJobSchema: GenMessage<IngestionJob> =
-  /*@__PURE__*/
+export const IngestionJobSchema: GenMessage<IngestionJob> = /*@__PURE__*/
   messageDesc(file_gpai_ingestion_v1_job, 0);
+

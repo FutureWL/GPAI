@@ -13,12 +13,8 @@ import type { Message } from "@bufbuild/protobuf";
 /**
  * Describes the file gpai/market/v1/ohlcv.proto.
  */
-export const file_gpai_market_v1_ohlcv: GenFile =
-  /*@__PURE__*/
-  fileDesc(
-    "ChpncGFpL21hcmtldC92MS9vaGxjdi5wcm90bxIOZ3BhaS5tYXJrZXQudjEi0wEKBU9ITENWEhUKDWluc3RydW1lbnRfaWQYASABKAkSKgoIaW50ZXJ2YWwYAiABKA4yGC5ncGFpLmNvbW1vbi52MS5JbnRlcnZhbBItCglvcGVuX3RpbWUYAyABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wEgwKBG9wZW4YBCABKAESDAoEaGlnaBgFIAEoARILCgNsb3cYBiABKAESDQoFY2xvc2UYByABKAESDgoGdm9sdW1lGAggASgDEhAKCHR1cm5vdmVyGAkgASgDYgZwcm90bzM",
-    [file_google_protobuf_timestamp, file_gpai_common_v1_types],
-  );
+export const file_gpai_market_v1_ohlcv: GenFile = /*@__PURE__*/
+  fileDesc("ChpncGFpL21hcmtldC92MS9vaGxjdi5wcm90bxIOZ3BhaS5tYXJrZXQudjEi0wEKBU9ITENWEhUKDWluc3RydW1lbnRfaWQYASABKAkSKgoIaW50ZXJ2YWwYAiABKA4yGC5ncGFpLmNvbW1vbi52MS5JbnRlcnZhbBItCglvcGVuX3RpbWUYAyABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wEgwKBG9wZW4YBCABKAESDAoEaGlnaBgFIAEoARILCgNsb3cYBiABKAESDQoFY2xvc2UYByABKAESDgoGdm9sdW1lGAggASgDEhAKCHR1cm5vdmVyGAkgASgDQjBaLmdpdGh1Yi5jb20vRnV0dXJlV0wvR1BBSS9nZW4vZ28vZ3BhaS9tYXJrZXQvdjFiBnByb3RvMw", [file_google_protobuf_timestamp, file_gpai_common_v1_types]);
 
 /**
  * @generated from message gpai.market.v1.OHLCV
@@ -74,6 +70,6 @@ export type OHLCV = Message<"gpai.market.v1.OHLCV"> & {
  * Describes the message gpai.market.v1.OHLCV.
  * Use `create(OHLCVSchema)` to create a new message.
  */
-export const OHLCVSchema: GenMessage<OHLCV> =
-  /*@__PURE__*/
+export const OHLCVSchema: GenMessage<OHLCV> = /*@__PURE__*/
   messageDesc(file_gpai_market_v1_ohlcv, 0);
+

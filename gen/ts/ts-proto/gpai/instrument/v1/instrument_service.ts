@@ -35,22 +35,15 @@ function createBaseGetInstrumentRequest(): GetInstrumentRequest {
 }
 
 export const GetInstrumentRequest: MessageFns<GetInstrumentRequest> = {
-  encode(
-    message: GetInstrumentRequest,
-    writer: BinaryWriter = new BinaryWriter(),
-  ): BinaryWriter {
+  encode(message: GetInstrumentRequest, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
     if (message.id !== "") {
       writer.uint32(10).string(message.id);
     }
     return writer;
   },
 
-  decode(
-    input: BinaryReader | Uint8Array,
-    length?: number,
-  ): GetInstrumentRequest {
-    const reader =
-      input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): GetInstrumentRequest {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseGetInstrumentRequest();
     while (reader.pos < end) {
@@ -100,22 +93,15 @@ function createBaseGetInstrumentResponse(): GetInstrumentResponse {
 }
 
 export const GetInstrumentResponse: MessageFns<GetInstrumentResponse> = {
-  encode(
-    message: GetInstrumentResponse,
-    writer: BinaryWriter = new BinaryWriter(),
-  ): BinaryWriter {
+  encode(message: GetInstrumentResponse, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
     if (message.instrument !== undefined) {
       Instrument.encode(message.instrument, writer.uint32(10).fork()).join();
     }
     return writer;
   },
 
-  decode(
-    input: BinaryReader | Uint8Array,
-    length?: number,
-  ): GetInstrumentResponse {
-    const reader =
-      input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): GetInstrumentResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseGetInstrumentResponse();
     while (reader.pos < end) {
@@ -139,11 +125,7 @@ export const GetInstrumentResponse: MessageFns<GetInstrumentResponse> = {
   },
 
   fromJSON(object: any): GetInstrumentResponse {
-    return {
-      instrument: isSet(object.instrument)
-        ? Instrument.fromJSON(object.instrument)
-        : undefined,
-    };
+    return { instrument: isSet(object.instrument) ? Instrument.fromJSON(object.instrument) : undefined };
   },
 
   toJSON(message: GetInstrumentResponse): unknown {
@@ -157,14 +139,11 @@ export const GetInstrumentResponse: MessageFns<GetInstrumentResponse> = {
   create(base?: DeepPartial<GetInstrumentResponse>): GetInstrumentResponse {
     return GetInstrumentResponse.fromPartial(base ?? {});
   },
-  fromPartial(
-    object: DeepPartial<GetInstrumentResponse>,
-  ): GetInstrumentResponse {
+  fromPartial(object: DeepPartial<GetInstrumentResponse>): GetInstrumentResponse {
     const message = createBaseGetInstrumentResponse();
-    message.instrument =
-      object.instrument !== undefined && object.instrument !== null
-        ? Instrument.fromPartial(object.instrument)
-        : undefined;
+    message.instrument = (object.instrument !== undefined && object.instrument !== null)
+      ? Instrument.fromPartial(object.instrument)
+      : undefined;
     return message;
   },
 };
@@ -174,10 +153,7 @@ function createBaseListInstrumentsRequest(): ListInstrumentsRequest {
 }
 
 export const ListInstrumentsRequest: MessageFns<ListInstrumentsRequest> = {
-  encode(
-    message: ListInstrumentsRequest,
-    writer: BinaryWriter = new BinaryWriter(),
-  ): BinaryWriter {
+  encode(message: ListInstrumentsRequest, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
     if (message.market !== 0) {
       writer.uint32(8).int32(message.market);
     }
@@ -187,12 +163,8 @@ export const ListInstrumentsRequest: MessageFns<ListInstrumentsRequest> = {
     return writer;
   },
 
-  decode(
-    input: BinaryReader | Uint8Array,
-    length?: number,
-  ): ListInstrumentsRequest {
-    const reader =
-      input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): ListInstrumentsRequest {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseListInstrumentsRequest();
     while (reader.pos < end) {
@@ -244,15 +216,12 @@ export const ListInstrumentsRequest: MessageFns<ListInstrumentsRequest> = {
   create(base?: DeepPartial<ListInstrumentsRequest>): ListInstrumentsRequest {
     return ListInstrumentsRequest.fromPartial(base ?? {});
   },
-  fromPartial(
-    object: DeepPartial<ListInstrumentsRequest>,
-  ): ListInstrumentsRequest {
+  fromPartial(object: DeepPartial<ListInstrumentsRequest>): ListInstrumentsRequest {
     const message = createBaseListInstrumentsRequest();
     message.market = object.market ?? 0;
-    message.page =
-      object.page !== undefined && object.page !== null
-        ? PageRequest.fromPartial(object.page)
-        : undefined;
+    message.page = (object.page !== undefined && object.page !== null)
+      ? PageRequest.fromPartial(object.page)
+      : undefined;
     return message;
   },
 };
@@ -262,10 +231,7 @@ function createBaseListInstrumentsResponse(): ListInstrumentsResponse {
 }
 
 export const ListInstrumentsResponse: MessageFns<ListInstrumentsResponse> = {
-  encode(
-    message: ListInstrumentsResponse,
-    writer: BinaryWriter = new BinaryWriter(),
-  ): BinaryWriter {
+  encode(message: ListInstrumentsResponse, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
     for (const v of message.instruments) {
       Instrument.encode(v!, writer.uint32(10).fork()).join();
     }
@@ -275,12 +241,8 @@ export const ListInstrumentsResponse: MessageFns<ListInstrumentsResponse> = {
     return writer;
   },
 
-  decode(
-    input: BinaryReader | Uint8Array,
-    length?: number,
-  ): ListInstrumentsResponse {
-    const reader =
-      input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): ListInstrumentsResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseListInstrumentsResponse();
     while (reader.pos < end) {
@@ -334,16 +296,12 @@ export const ListInstrumentsResponse: MessageFns<ListInstrumentsResponse> = {
   create(base?: DeepPartial<ListInstrumentsResponse>): ListInstrumentsResponse {
     return ListInstrumentsResponse.fromPartial(base ?? {});
   },
-  fromPartial(
-    object: DeepPartial<ListInstrumentsResponse>,
-  ): ListInstrumentsResponse {
+  fromPartial(object: DeepPartial<ListInstrumentsResponse>): ListInstrumentsResponse {
     const message = createBaseListInstrumentsResponse();
-    message.instruments =
-      object.instruments?.map((e) => Instrument.fromPartial(e)) || [];
-    message.page =
-      object.page !== undefined && object.page !== null
-        ? PageResponse.fromPartial(object.page)
-        : undefined;
+    message.instruments = object.instruments?.map((e) => Instrument.fromPartial(e)) || [];
+    message.page = (object.page !== undefined && object.page !== null)
+      ? PageResponse.fromPartial(object.page)
+      : undefined;
     return message;
   },
 };
@@ -372,24 +330,13 @@ export const InstrumentServiceDefinition = {
   },
 } as const;
 
-type Builtin =
-  | Date
-  | Function
-  | Uint8Array
-  | string
-  | number
-  | boolean
-  | undefined;
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 
-export type DeepPartial<T> = T extends Builtin
-  ? T
-  : T extends globalThis.Array<infer U>
-    ? globalThis.Array<DeepPartial<U>>
-    : T extends ReadonlyArray<infer U>
-      ? ReadonlyArray<DeepPartial<U>>
-      : T extends {}
-        ? { [K in keyof T]?: DeepPartial<T[K]> }
-        : Partial<T>;
+export type DeepPartial<T> = T extends Builtin ? T
+  : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
+  : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
+  : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
+  : Partial<T>;
 
 function isSet(value: any): boolean {
   return value !== null && value !== undefined;

@@ -77,10 +77,7 @@ function createBaseTransaction(): Transaction {
 }
 
 export const Transaction: MessageFns<Transaction> = {
-  encode(
-    message: Transaction,
-    writer: BinaryWriter = new BinaryWriter(),
-  ): BinaryWriter {
+  encode(message: Transaction, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
     if (message.id !== "") {
       writer.uint32(10).string(message.id);
     }
@@ -103,10 +100,7 @@ export const Transaction: MessageFns<Transaction> = {
       writer.uint32(58).string(message.fee);
     }
     if (message.executedAt !== undefined) {
-      Timestamp.encode(
-        toTimestamp(message.executedAt),
-        writer.uint32(66).fork(),
-      ).join();
+      Timestamp.encode(toTimestamp(message.executedAt), writer.uint32(66).fork()).join();
     }
     if (message.note !== "") {
       writer.uint32(74).string(message.note);
@@ -115,8 +109,7 @@ export const Transaction: MessageFns<Transaction> = {
   },
 
   decode(input: BinaryReader | Uint8Array, length?: number): Transaction {
-    const reader =
-      input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseTransaction();
     while (reader.pos < end) {
@@ -183,9 +176,7 @@ export const Transaction: MessageFns<Transaction> = {
             break;
           }
 
-          message.executedAt = fromTimestamp(
-            Timestamp.decode(reader, reader.uint32()),
-          );
+          message.executedAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
           continue;
         }
         case 9: {
@@ -211,13 +202,13 @@ export const Transaction: MessageFns<Transaction> = {
       portfolioId: isSet(object.portfolioId)
         ? globalThis.String(object.portfolioId)
         : isSet(object.portfolio_id)
-          ? globalThis.String(object.portfolio_id)
-          : "",
+        ? globalThis.String(object.portfolio_id)
+        : "",
       instrumentId: isSet(object.instrumentId)
         ? globalThis.String(object.instrumentId)
         : isSet(object.instrument_id)
-          ? globalThis.String(object.instrument_id)
-          : "",
+        ? globalThis.String(object.instrument_id)
+        : "",
       side: isSet(object.side) ? sideFromJSON(object.side) : 0,
       quantity: isSet(object.quantity) ? globalThis.Number(object.quantity) : 0,
       price: isSet(object.price) ? globalThis.String(object.price) : "",
@@ -225,8 +216,8 @@ export const Transaction: MessageFns<Transaction> = {
       executedAt: isSet(object.executedAt)
         ? fromJsonTimestamp(object.executedAt)
         : isSet(object.executed_at)
-          ? fromJsonTimestamp(object.executed_at)
-          : undefined,
+        ? fromJsonTimestamp(object.executed_at)
+        : undefined,
       note: isSet(object.note) ? globalThis.String(object.note) : "",
     };
   },
@@ -281,24 +272,13 @@ export const Transaction: MessageFns<Transaction> = {
   },
 };
 
-type Builtin =
-  | Date
-  | Function
-  | Uint8Array
-  | string
-  | number
-  | boolean
-  | undefined;
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 
-export type DeepPartial<T> = T extends Builtin
-  ? T
-  : T extends globalThis.Array<infer U>
-    ? globalThis.Array<DeepPartial<U>>
-    : T extends ReadonlyArray<infer U>
-      ? ReadonlyArray<DeepPartial<U>>
-      : T extends {}
-        ? { [K in keyof T]?: DeepPartial<T[K]> }
-        : Partial<T>;
+export type DeepPartial<T> = T extends Builtin ? T
+  : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
+  : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
+  : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
+  : Partial<T>;
 
 function toTimestamp(date: Date): Timestamp {
   const seconds = Math.trunc(date.getTime() / 1_000);

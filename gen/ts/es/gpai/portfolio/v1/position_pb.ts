@@ -13,12 +13,8 @@ import type { Message } from "@bufbuild/protobuf";
 /**
  * Describes the file gpai/portfolio/v1/position.proto.
  */
-export const file_gpai_portfolio_v1_position: GenFile =
-  /*@__PURE__*/
-  fileDesc(
-    "CiBncGFpL3BvcnRmb2xpby92MS9wb3NpdGlvbi5wcm90bxIRZ3BhaS5wb3J0Zm9saW8udjEi9wEKCFBvc2l0aW9uEgoKAmlkGAEgASgJEhQKDHBvcnRmb2xpb19pZBgCIAEoCRIVCg1pbnN0cnVtZW50X2lkGAMgASgJEhAKCHF1YW50aXR5GAQgASgDEhAKCGF2Z19jb3N0GAUgASgJEi0KCW9wZW5lZF9hdBgGIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXASKwoMbWFya2V0X3ZhbHVlGAcgASgLMhUuZ3BhaS5jb21tb24udjEuTW9uZXkSFgoOdW5yZWFsaXplZF9wbmwYCCABKAESGgoSdW5yZWFsaXplZF9wbmxfcGN0GAkgASgBYgZwcm90bzM",
-    [file_google_protobuf_timestamp, file_gpai_common_v1_types],
-  );
+export const file_gpai_portfolio_v1_position: GenFile = /*@__PURE__*/
+  fileDesc("CiBncGFpL3BvcnRmb2xpby92MS9wb3NpdGlvbi5wcm90bxIRZ3BhaS5wb3J0Zm9saW8udjEi9wEKCFBvc2l0aW9uEgoKAmlkGAEgASgJEhQKDHBvcnRmb2xpb19pZBgCIAEoCRIVCg1pbnN0cnVtZW50X2lkGAMgASgJEhAKCHF1YW50aXR5GAQgASgDEhAKCGF2Z19jb3N0GAUgASgJEi0KCW9wZW5lZF9hdBgGIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXASKwoMbWFya2V0X3ZhbHVlGAcgASgLMhUuZ3BhaS5jb21tb24udjEuTW9uZXkSFgoOdW5yZWFsaXplZF9wbmwYCCABKAESGgoSdW5yZWFsaXplZF9wbmxfcGN0GAkgASgBQjNaMWdpdGh1Yi5jb20vRnV0dXJlV0wvR1BBSS9nZW4vZ28vZ3BhaS9wb3J0Zm9saW8vdjFiBnByb3RvMw", [file_google_protobuf_timestamp, file_gpai_common_v1_types]);
 
 /**
  * @generated from message gpai.portfolio.v1.Position
@@ -76,6 +72,6 @@ export type Position = Message<"gpai.portfolio.v1.Position"> & {
  * Describes the message gpai.portfolio.v1.Position.
  * Use `create(PositionSchema)` to create a new message.
  */
-export const PositionSchema: GenMessage<Position> =
-  /*@__PURE__*/
+export const PositionSchema: GenMessage<Position> = /*@__PURE__*/
   messageDesc(file_gpai_portfolio_v1_position, 0);
+

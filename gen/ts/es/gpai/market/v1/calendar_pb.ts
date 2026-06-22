@@ -9,11 +9,8 @@ import type { Message } from "@bufbuild/protobuf";
 /**
  * Describes the file gpai/market/v1/calendar.proto.
  */
-export const file_gpai_market_v1_calendar: GenFile =
-  /*@__PURE__*/
-  fileDesc(
-    "Ch1ncGFpL21hcmtldC92MS9jYWxlbmRhci5wcm90bxIOZ3BhaS5tYXJrZXQudjEiLQoOVHJhZGluZ1Nlc3Npb24SDAoEb3BlbhgBIAEoCRINCgVjbG9zZRgCIAEoCSJ4Cg5NYXJrZXRDYWxlbmRhchIOCgZtYXJrZXQYASABKA0SDAoEZGF0ZRgCIAEoCRIWCg5pc190cmFkaW5nX2RheRgDIAEoCBIwCghzZXNzaW9ucxgEIAMoCzIeLmdwYWkubWFya2V0LnYxLlRyYWRpbmdTZXNzaW9uYgZwcm90bzM",
-  );
+export const file_gpai_market_v1_calendar: GenFile = /*@__PURE__*/
+  fileDesc("Ch1ncGFpL21hcmtldC92MS9jYWxlbmRhci5wcm90bxIOZ3BhaS5tYXJrZXQudjEiLQoOVHJhZGluZ1Nlc3Npb24SDAoEb3BlbhgBIAEoCRINCgVjbG9zZRgCIAEoCSJ4Cg5NYXJrZXRDYWxlbmRhchIOCgZtYXJrZXQYASABKA0SDAoEZGF0ZRgCIAEoCRIWCg5pc190cmFkaW5nX2RheRgDIAEoCBIwCghzZXNzaW9ucxgEIAMoCzIeLmdwYWkubWFya2V0LnYxLlRyYWRpbmdTZXNzaW9uQjBaLmdpdGh1Yi5jb20vRnV0dXJlV0wvR1BBSS9nZW4vZ28vZ3BhaS9tYXJrZXQvdjFiBnByb3RvMw");
 
 /**
  * @generated from message gpai.market.v1.TradingSession
@@ -36,8 +33,7 @@ export type TradingSession = Message<"gpai.market.v1.TradingSession"> & {
  * Describes the message gpai.market.v1.TradingSession.
  * Use `create(TradingSessionSchema)` to create a new message.
  */
-export const TradingSessionSchema: GenMessage<TradingSession> =
-  /*@__PURE__*/
+export const TradingSessionSchema: GenMessage<TradingSession> = /*@__PURE__*/
   messageDesc(file_gpai_market_v1_calendar, 0);
 
 /**
@@ -73,6 +69,6 @@ export type MarketCalendar = Message<"gpai.market.v1.MarketCalendar"> & {
  * Describes the message gpai.market.v1.MarketCalendar.
  * Use `create(MarketCalendarSchema)` to create a new message.
  */
-export const MarketCalendarSchema: GenMessage<MarketCalendar> =
-  /*@__PURE__*/
+export const MarketCalendarSchema: GenMessage<MarketCalendar> = /*@__PURE__*/
   messageDesc(file_gpai_market_v1_calendar, 1);
+

@@ -2,43 +2,23 @@
 // @generated from file gpai/market/v1/market_data_service.proto (package gpai.market.v1, syntax proto3)
 /* eslint-disable */
 
-import type {
-  GenFile,
-  GenMessage,
-  GenService,
-} from "@bufbuild/protobuf/codegenv2";
-import {
-  fileDesc,
-  messageDesc,
-  serviceDesc,
-} from "@bufbuild/protobuf/codegenv2";
+import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv2";
+import { fileDesc, messageDesc, serviceDesc } from "@bufbuild/protobuf/codegenv2";
+import type { PageRequest, PageResponse } from "../../common/v1/pagination_pb.ts";
+import { file_gpai_common_v1_pagination } from "../../common/v1/pagination_pb.ts";
 import type { Market } from "../../common/v1/types_pb.ts";
 import { file_gpai_common_v1_types } from "../../common/v1/types_pb.ts";
-import type {
-  PageRequest,
-  PageResponse,
-} from "../../common/v1/pagination_pb.ts";
-import { file_gpai_common_v1_pagination } from "../../common/v1/pagination_pb.ts";
-import type { Quote } from "./quote_pb.ts";
-import { file_gpai_market_v1_quote } from "./quote_pb.ts";
 import type { Instrument } from "../../instrument/v1/instrument_pb.ts";
 import { file_gpai_instrument_v1_instrument } from "../../instrument/v1/instrument_pb.ts";
+import type { Quote } from "./quote_pb.ts";
+import { file_gpai_market_v1_quote } from "./quote_pb.ts";
 import type { Message } from "@bufbuild/protobuf";
 
 /**
  * Describes the file gpai/market/v1/market_data_service.proto.
  */
-export const file_gpai_market_v1_market_data_service: GenFile =
-  /*@__PURE__*/
-  fileDesc(
-    "CihncGFpL21hcmtldC92MS9tYXJrZXRfZGF0YV9zZXJ2aWNlLnByb3RvEg5ncGFpLm1hcmtldC52MSIoCg9HZXRRdW90ZVJlcXVlc3QSFQoNaW5zdHJ1bWVudF9pZBgBIAEoCSI4ChBHZXRRdW90ZVJlc3BvbnNlEiQKBXF1b3RlGAEgASgLMhUuZ3BhaS5tYXJrZXQudjEuUXVvdGUiQAoYVXBzZXJ0TGF0ZXN0UXVvdGVSZXF1ZXN0EiQKBXF1b3RlGAEgASgLMhUuZ3BhaS5tYXJrZXQudjEuUXVvdGUiLQoZVXBzZXJ0TGF0ZXN0UXVvdGVSZXNwb25zZRIQCghhY2NlcHRlZBgBIAEoCCJrChZMaXN0SW5zdHJ1bWVudHNSZXF1ZXN0EiYKBm1hcmtldBgBIAEoDjIWLmdwYWkuY29tbW9uLnYxLk1hcmtldBIpCgRwYWdlGAIgASgLMhsuZ3BhaS5jb21tb24udjEuUGFnZVJlcXVlc3QiegoXTGlzdEluc3RydW1lbnRzUmVzcG9uc2USMwoLaW5zdHJ1bWVudHMYASADKAsyHi5ncGFpLmluc3RydW1lbnQudjEuSW5zdHJ1bWVudBIqCgRwYWdlGAIgASgLMhwuZ3BhaS5jb21tb24udjEuUGFnZVJlc3BvbnNlMrACChFNYXJrZXREYXRhU2VydmljZRJNCghHZXRRdW90ZRIfLmdwYWkubWFya2V0LnYxLkdldFF1b3RlUmVxdWVzdBogLmdwYWkubWFya2V0LnYxLkdldFF1b3RlUmVzcG9uc2USaAoRVXBzZXJ0TGF0ZXN0UXVvdGUSKC5ncGFpLm1hcmtldC52MS5VcHNlcnRMYXRlc3RRdW90ZVJlcXVlc3QaKS5ncGFpLm1hcmtldC52MS5VcHNlcnRMYXRlc3RRdW90ZVJlc3BvbnNlEmIKD0xpc3RJbnN0cnVtZW50cxImLmdwYWkubWFya2V0LnYxLkxpc3RJbnN0cnVtZW50c1JlcXVlc3QaJy5ncGFpLm1hcmtldC52MS5MaXN0SW5zdHJ1bWVudHNSZXNwb25zZWIGcHJvdG8z",
-    [
-      file_gpai_common_v1_types,
-      file_gpai_common_v1_pagination,
-      file_gpai_market_v1_quote,
-      file_gpai_instrument_v1_instrument,
-    ],
-  );
+export const file_gpai_market_v1_market_data_service: GenFile = /*@__PURE__*/
+  fileDesc("CihncGFpL21hcmtldC92MS9tYXJrZXRfZGF0YV9zZXJ2aWNlLnByb3RvEg5ncGFpLm1hcmtldC52MSIoCg9HZXRRdW90ZVJlcXVlc3QSFQoNaW5zdHJ1bWVudF9pZBgBIAEoCSI4ChBHZXRRdW90ZVJlc3BvbnNlEiQKBXF1b3RlGAEgASgLMhUuZ3BhaS5tYXJrZXQudjEuUXVvdGUiQAoYVXBzZXJ0TGF0ZXN0UXVvdGVSZXF1ZXN0EiQKBXF1b3RlGAEgASgLMhUuZ3BhaS5tYXJrZXQudjEuUXVvdGUiLQoZVXBzZXJ0TGF0ZXN0UXVvdGVSZXNwb25zZRIQCghhY2NlcHRlZBgBIAEoCCJrChZMaXN0SW5zdHJ1bWVudHNSZXF1ZXN0EiYKBm1hcmtldBgBIAEoDjIWLmdwYWkuY29tbW9uLnYxLk1hcmtldBIpCgRwYWdlGAIgASgLMhsuZ3BhaS5jb21tb24udjEuUGFnZVJlcXVlc3QiegoXTGlzdEluc3RydW1lbnRzUmVzcG9uc2USMwoLaW5zdHJ1bWVudHMYASADKAsyHi5ncGFpLmluc3RydW1lbnQudjEuSW5zdHJ1bWVudBIqCgRwYWdlGAIgASgLMhwuZ3BhaS5jb21tb24udjEuUGFnZVJlc3BvbnNlMrACChFNYXJrZXREYXRhU2VydmljZRJNCghHZXRRdW90ZRIfLmdwYWkubWFya2V0LnYxLkdldFF1b3RlUmVxdWVzdBogLmdwYWkubWFya2V0LnYxLkdldFF1b3RlUmVzcG9uc2USaAoRVXBzZXJ0TGF0ZXN0UXVvdGUSKC5ncGFpLm1hcmtldC52MS5VcHNlcnRMYXRlc3RRdW90ZVJlcXVlc3QaKS5ncGFpLm1hcmtldC52MS5VcHNlcnRMYXRlc3RRdW90ZVJlc3BvbnNlEmIKD0xpc3RJbnN0cnVtZW50cxImLmdwYWkubWFya2V0LnYxLkxpc3RJbnN0cnVtZW50c1JlcXVlc3QaJy5ncGFpLm1hcmtldC52MS5MaXN0SW5zdHJ1bWVudHNSZXNwb25zZUIwWi5naXRodWIuY29tL0Z1dHVyZVdML0dQQUkvZ2VuL2dvL2dwYWkvbWFya2V0L3YxYgZwcm90bzM", [file_gpai_common_v1_pagination, file_gpai_common_v1_types, file_gpai_instrument_v1_instrument, file_gpai_market_v1_quote]);
 
 /**
  * @generated from message gpai.market.v1.GetQuoteRequest
@@ -54,8 +34,7 @@ export type GetQuoteRequest = Message<"gpai.market.v1.GetQuoteRequest"> & {
  * Describes the message gpai.market.v1.GetQuoteRequest.
  * Use `create(GetQuoteRequestSchema)` to create a new message.
  */
-export const GetQuoteRequestSchema: GenMessage<GetQuoteRequest> =
-  /*@__PURE__*/
+export const GetQuoteRequestSchema: GenMessage<GetQuoteRequest> = /*@__PURE__*/
   messageDesc(file_gpai_market_v1_market_data_service, 0);
 
 /**
@@ -72,94 +51,85 @@ export type GetQuoteResponse = Message<"gpai.market.v1.GetQuoteResponse"> & {
  * Describes the message gpai.market.v1.GetQuoteResponse.
  * Use `create(GetQuoteResponseSchema)` to create a new message.
  */
-export const GetQuoteResponseSchema: GenMessage<GetQuoteResponse> =
-  /*@__PURE__*/
+export const GetQuoteResponseSchema: GenMessage<GetQuoteResponse> = /*@__PURE__*/
   messageDesc(file_gpai_market_v1_market_data_service, 1);
 
 /**
  * @generated from message gpai.market.v1.UpsertLatestQuoteRequest
  */
-export type UpsertLatestQuoteRequest =
-  Message<"gpai.market.v1.UpsertLatestQuoteRequest"> & {
-    /**
-     * @generated from field: gpai.market.v1.Quote quote = 1;
-     */
-    quote?: Quote | undefined;
-  };
+export type UpsertLatestQuoteRequest = Message<"gpai.market.v1.UpsertLatestQuoteRequest"> & {
+  /**
+   * @generated from field: gpai.market.v1.Quote quote = 1;
+   */
+  quote?: Quote | undefined;
+};
 
 /**
  * Describes the message gpai.market.v1.UpsertLatestQuoteRequest.
  * Use `create(UpsertLatestQuoteRequestSchema)` to create a new message.
  */
-export const UpsertLatestQuoteRequestSchema: GenMessage<UpsertLatestQuoteRequest> =
-  /*@__PURE__*/
+export const UpsertLatestQuoteRequestSchema: GenMessage<UpsertLatestQuoteRequest> = /*@__PURE__*/
   messageDesc(file_gpai_market_v1_market_data_service, 2);
 
 /**
  * @generated from message gpai.market.v1.UpsertLatestQuoteResponse
  */
-export type UpsertLatestQuoteResponse =
-  Message<"gpai.market.v1.UpsertLatestQuoteResponse"> & {
-    /**
-     * @generated from field: bool accepted = 1;
-     */
-    accepted: boolean;
-  };
+export type UpsertLatestQuoteResponse = Message<"gpai.market.v1.UpsertLatestQuoteResponse"> & {
+  /**
+   * @generated from field: bool accepted = 1;
+   */
+  accepted: boolean;
+};
 
 /**
  * Describes the message gpai.market.v1.UpsertLatestQuoteResponse.
  * Use `create(UpsertLatestQuoteResponseSchema)` to create a new message.
  */
-export const UpsertLatestQuoteResponseSchema: GenMessage<UpsertLatestQuoteResponse> =
-  /*@__PURE__*/
+export const UpsertLatestQuoteResponseSchema: GenMessage<UpsertLatestQuoteResponse> = /*@__PURE__*/
   messageDesc(file_gpai_market_v1_market_data_service, 3);
 
 /**
  * @generated from message gpai.market.v1.ListInstrumentsRequest
  */
-export type ListInstrumentsRequest =
-  Message<"gpai.market.v1.ListInstrumentsRequest"> & {
-    /**
-     * @generated from field: gpai.common.v1.Market market = 1;
-     */
-    market: Market;
+export type ListInstrumentsRequest = Message<"gpai.market.v1.ListInstrumentsRequest"> & {
+  /**
+   * @generated from field: gpai.common.v1.Market market = 1;
+   */
+  market: Market;
 
-    /**
-     * @generated from field: gpai.common.v1.PageRequest page = 2;
-     */
-    page?: PageRequest | undefined;
-  };
+  /**
+   * @generated from field: gpai.common.v1.PageRequest page = 2;
+   */
+  page?: PageRequest | undefined;
+};
 
 /**
  * Describes the message gpai.market.v1.ListInstrumentsRequest.
  * Use `create(ListInstrumentsRequestSchema)` to create a new message.
  */
-export const ListInstrumentsRequestSchema: GenMessage<ListInstrumentsRequest> =
-  /*@__PURE__*/
+export const ListInstrumentsRequestSchema: GenMessage<ListInstrumentsRequest> = /*@__PURE__*/
   messageDesc(file_gpai_market_v1_market_data_service, 4);
 
 /**
  * @generated from message gpai.market.v1.ListInstrumentsResponse
  */
-export type ListInstrumentsResponse =
-  Message<"gpai.market.v1.ListInstrumentsResponse"> & {
-    /**
-     * @generated from field: repeated gpai.instrument.v1.Instrument instruments = 1;
-     */
-    instruments: Instrument[];
+export type ListInstrumentsResponse = Message<"gpai.market.v1.ListInstrumentsResponse"> & {
+  /**
+   * @generated from field: repeated gpai.instrument.v1.Instrument instruments = 1;
+   */
+  instruments: Instrument[];
 
-    /**
-     * @generated from field: gpai.common.v1.PageResponse page = 2;
-     */
-    page?: PageResponse | undefined;
-  };
+  /**
+   * @generated from field: gpai.common.v1.PageResponse page = 2;
+   */
+  page?: PageResponse | undefined;
+};
 
 /**
  * Describes the message gpai.market.v1.ListInstrumentsResponse.
  * Use `create(ListInstrumentsResponseSchema)` to create a new message.
  */
-export const ListInstrumentsResponseSchema: GenMessage<ListInstrumentsResponse> =
-  /*@__PURE__*/
+export const ListInstrumentsResponseSchema: GenMessage<ListInstrumentsResponse> = /*@__PURE__*/
   messageDesc(file_gpai_market_v1_market_data_service, 5);
 
 /**
@@ -173,7 +143,7 @@ export const MarketDataService: GenService<{
     methodKind: "unary";
     input: typeof GetQuoteRequestSchema;
     output: typeof GetQuoteResponseSchema;
-  };
+  },
   /**
    * @generated from rpc gpai.market.v1.MarketDataService.UpsertLatestQuote
    */
@@ -181,7 +151,7 @@ export const MarketDataService: GenService<{
     methodKind: "unary";
     input: typeof UpsertLatestQuoteRequestSchema;
     output: typeof UpsertLatestQuoteResponseSchema;
-  };
+  },
   /**
    * @generated from rpc gpai.market.v1.MarketDataService.ListInstruments
    */
@@ -189,5 +159,7 @@ export const MarketDataService: GenService<{
     methodKind: "unary";
     input: typeof ListInstrumentsRequestSchema;
     output: typeof ListInstrumentsResponseSchema;
-  };
-}> = /*@__PURE__*/ serviceDesc(file_gpai_market_v1_market_data_service, 0);
+  },
+}> = /*@__PURE__*/
+  serviceDesc(file_gpai_market_v1_market_data_service, 0);
+

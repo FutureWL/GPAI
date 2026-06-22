@@ -2,125 +2,98 @@
 // @generated from file gpai/instrument/v1/instrument_service.proto (package gpai.instrument.v1, syntax proto3)
 /* eslint-disable */
 
-import type {
-  GenFile,
-  GenMessage,
-  GenService,
-} from "@bufbuild/protobuf/codegenv2";
-import {
-  fileDesc,
-  messageDesc,
-  serviceDesc,
-} from "@bufbuild/protobuf/codegenv2";
-import type { Instrument } from "./instrument_pb.ts";
-import { file_gpai_instrument_v1_instrument } from "./instrument_pb.ts";
+import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv2";
+import { fileDesc, messageDesc, serviceDesc } from "@bufbuild/protobuf/codegenv2";
+import type { PageRequest, PageResponse } from "../../common/v1/pagination_pb.ts";
+import { file_gpai_common_v1_pagination } from "../../common/v1/pagination_pb.ts";
 import type { Market } from "../../common/v1/types_pb.ts";
 import { file_gpai_common_v1_types } from "../../common/v1/types_pb.ts";
-import type {
-  PageRequest,
-  PageResponse,
-} from "../../common/v1/pagination_pb.ts";
-import { file_gpai_common_v1_pagination } from "../../common/v1/pagination_pb.ts";
+import type { Instrument } from "./instrument_pb.ts";
+import { file_gpai_instrument_v1_instrument } from "./instrument_pb.ts";
 import type { Message } from "@bufbuild/protobuf";
 
 /**
  * Describes the file gpai/instrument/v1/instrument_service.proto.
  */
-export const file_gpai_instrument_v1_instrument_service: GenFile =
-  /*@__PURE__*/
-  fileDesc(
-    "CitncGFpL2luc3RydW1lbnQvdjEvaW5zdHJ1bWVudF9zZXJ2aWNlLnByb3RvEhJncGFpLmluc3RydW1lbnQudjEiIgoUR2V0SW5zdHJ1bWVudFJlcXVlc3QSCgoCaWQYASABKAkiSwoVR2V0SW5zdHJ1bWVudFJlc3BvbnNlEjIKCmluc3RydW1lbnQYASABKAsyHi5ncGFpLmluc3RydW1lbnQudjEuSW5zdHJ1bWVudCJrChZMaXN0SW5zdHJ1bWVudHNSZXF1ZXN0EiYKBm1hcmtldBgBIAEoDjIWLmdwYWkuY29tbW9uLnYxLk1hcmtldBIpCgRwYWdlGAIgASgLMhsuZ3BhaS5jb21tb24udjEuUGFnZVJlcXVlc3QiegoXTGlzdEluc3RydW1lbnRzUmVzcG9uc2USMwoLaW5zdHJ1bWVudHMYASADKAsyHi5ncGFpLmluc3RydW1lbnQudjEuSW5zdHJ1bWVudBIqCgRwYWdlGAIgASgLMhwuZ3BhaS5jb21tb24udjEuUGFnZVJlc3BvbnNlMuUBChFJbnN0cnVtZW50U2VydmljZRJkCg1HZXRJbnN0cnVtZW50EiguZ3BhaS5pbnN0cnVtZW50LnYxLkdldEluc3RydW1lbnRSZXF1ZXN0GikuZ3BhaS5pbnN0cnVtZW50LnYxLkdldEluc3RydW1lbnRSZXNwb25zZRJqCg9MaXN0SW5zdHJ1bWVudHMSKi5ncGFpLmluc3RydW1lbnQudjEuTGlzdEluc3RydW1lbnRzUmVxdWVzdBorLmdwYWkuaW5zdHJ1bWVudC52MS5MaXN0SW5zdHJ1bWVudHNSZXNwb25zZWIGcHJvdG8z",
-    [
-      file_gpai_instrument_v1_instrument,
-      file_gpai_common_v1_types,
-      file_gpai_common_v1_pagination,
-    ],
-  );
+export const file_gpai_instrument_v1_instrument_service: GenFile = /*@__PURE__*/
+  fileDesc("CitncGFpL2luc3RydW1lbnQvdjEvaW5zdHJ1bWVudF9zZXJ2aWNlLnByb3RvEhJncGFpLmluc3RydW1lbnQudjEiIgoUR2V0SW5zdHJ1bWVudFJlcXVlc3QSCgoCaWQYASABKAkiSwoVR2V0SW5zdHJ1bWVudFJlc3BvbnNlEjIKCmluc3RydW1lbnQYASABKAsyHi5ncGFpLmluc3RydW1lbnQudjEuSW5zdHJ1bWVudCJrChZMaXN0SW5zdHJ1bWVudHNSZXF1ZXN0EiYKBm1hcmtldBgBIAEoDjIWLmdwYWkuY29tbW9uLnYxLk1hcmtldBIpCgRwYWdlGAIgASgLMhsuZ3BhaS5jb21tb24udjEuUGFnZVJlcXVlc3QiegoXTGlzdEluc3RydW1lbnRzUmVzcG9uc2USMwoLaW5zdHJ1bWVudHMYASADKAsyHi5ncGFpLmluc3RydW1lbnQudjEuSW5zdHJ1bWVudBIqCgRwYWdlGAIgASgLMhwuZ3BhaS5jb21tb24udjEuUGFnZVJlc3BvbnNlMuUBChFJbnN0cnVtZW50U2VydmljZRJkCg1HZXRJbnN0cnVtZW50EiguZ3BhaS5pbnN0cnVtZW50LnYxLkdldEluc3RydW1lbnRSZXF1ZXN0GikuZ3BhaS5pbnN0cnVtZW50LnYxLkdldEluc3RydW1lbnRSZXNwb25zZRJqCg9MaXN0SW5zdHJ1bWVudHMSKi5ncGFpLmluc3RydW1lbnQudjEuTGlzdEluc3RydW1lbnRzUmVxdWVzdBorLmdwYWkuaW5zdHJ1bWVudC52MS5MaXN0SW5zdHJ1bWVudHNSZXNwb25zZUI0WjJnaXRodWIuY29tL0Z1dHVyZVdML0dQQUkvZ2VuL2dvL2dwYWkvaW5zdHJ1bWVudC92MWIGcHJvdG8z", [file_gpai_common_v1_pagination, file_gpai_common_v1_types, file_gpai_instrument_v1_instrument]);
 
 /**
  * @generated from message gpai.instrument.v1.GetInstrumentRequest
  */
-export type GetInstrumentRequest =
-  Message<"gpai.instrument.v1.GetInstrumentRequest"> & {
-    /**
-     * @generated from field: string id = 1;
-     */
-    id: string;
-  };
+export type GetInstrumentRequest = Message<"gpai.instrument.v1.GetInstrumentRequest"> & {
+  /**
+   * @generated from field: string id = 1;
+   */
+  id: string;
+};
 
 /**
  * Describes the message gpai.instrument.v1.GetInstrumentRequest.
  * Use `create(GetInstrumentRequestSchema)` to create a new message.
  */
-export const GetInstrumentRequestSchema: GenMessage<GetInstrumentRequest> =
-  /*@__PURE__*/
+export const GetInstrumentRequestSchema: GenMessage<GetInstrumentRequest> = /*@__PURE__*/
   messageDesc(file_gpai_instrument_v1_instrument_service, 0);
 
 /**
  * @generated from message gpai.instrument.v1.GetInstrumentResponse
  */
-export type GetInstrumentResponse =
-  Message<"gpai.instrument.v1.GetInstrumentResponse"> & {
-    /**
-     * @generated from field: gpai.instrument.v1.Instrument instrument = 1;
-     */
-    instrument?: Instrument | undefined;
-  };
+export type GetInstrumentResponse = Message<"gpai.instrument.v1.GetInstrumentResponse"> & {
+  /**
+   * @generated from field: gpai.instrument.v1.Instrument instrument = 1;
+   */
+  instrument?: Instrument | undefined;
+};
 
 /**
  * Describes the message gpai.instrument.v1.GetInstrumentResponse.
  * Use `create(GetInstrumentResponseSchema)` to create a new message.
  */
-export const GetInstrumentResponseSchema: GenMessage<GetInstrumentResponse> =
-  /*@__PURE__*/
+export const GetInstrumentResponseSchema: GenMessage<GetInstrumentResponse> = /*@__PURE__*/
   messageDesc(file_gpai_instrument_v1_instrument_service, 1);
 
 /**
  * @generated from message gpai.instrument.v1.ListInstrumentsRequest
  */
-export type ListInstrumentsRequest =
-  Message<"gpai.instrument.v1.ListInstrumentsRequest"> & {
-    /**
-     * @generated from field: gpai.common.v1.Market market = 1;
-     */
-    market: Market;
+export type ListInstrumentsRequest = Message<"gpai.instrument.v1.ListInstrumentsRequest"> & {
+  /**
+   * @generated from field: gpai.common.v1.Market market = 1;
+   */
+  market: Market;
 
-    /**
-     * @generated from field: gpai.common.v1.PageRequest page = 2;
-     */
-    page?: PageRequest | undefined;
-  };
+  /**
+   * @generated from field: gpai.common.v1.PageRequest page = 2;
+   */
+  page?: PageRequest | undefined;
+};
 
 /**
  * Describes the message gpai.instrument.v1.ListInstrumentsRequest.
  * Use `create(ListInstrumentsRequestSchema)` to create a new message.
  */
-export const ListInstrumentsRequestSchema: GenMessage<ListInstrumentsRequest> =
-  /*@__PURE__*/
+export const ListInstrumentsRequestSchema: GenMessage<ListInstrumentsRequest> = /*@__PURE__*/
   messageDesc(file_gpai_instrument_v1_instrument_service, 2);
 
 /**
  * @generated from message gpai.instrument.v1.ListInstrumentsResponse
  */
-export type ListInstrumentsResponse =
-  Message<"gpai.instrument.v1.ListInstrumentsResponse"> & {
-    /**
-     * @generated from field: repeated gpai.instrument.v1.Instrument instruments = 1;
-     */
-    instruments: Instrument[];
+export type ListInstrumentsResponse = Message<"gpai.instrument.v1.ListInstrumentsResponse"> & {
+  /**
+   * @generated from field: repeated gpai.instrument.v1.Instrument instruments = 1;
+   */
+  instruments: Instrument[];
 
-    /**
-     * @generated from field: gpai.common.v1.PageResponse page = 2;
-     */
-    page?: PageResponse | undefined;
-  };
+  /**
+   * @generated from field: gpai.common.v1.PageResponse page = 2;
+   */
+  page?: PageResponse | undefined;
+};
 
 /**
  * Describes the message gpai.instrument.v1.ListInstrumentsResponse.
  * Use `create(ListInstrumentsResponseSchema)` to create a new message.
  */
-export const ListInstrumentsResponseSchema: GenMessage<ListInstrumentsResponse> =
-  /*@__PURE__*/
+export const ListInstrumentsResponseSchema: GenMessage<ListInstrumentsResponse> = /*@__PURE__*/
   messageDesc(file_gpai_instrument_v1_instrument_service, 3);
 
 /**
@@ -134,7 +107,7 @@ export const InstrumentService: GenService<{
     methodKind: "unary";
     input: typeof GetInstrumentRequestSchema;
     output: typeof GetInstrumentResponseSchema;
-  };
+  },
   /**
    * @generated from rpc gpai.instrument.v1.InstrumentService.ListInstruments
    */
@@ -142,5 +115,7 @@ export const InstrumentService: GenService<{
     methodKind: "unary";
     input: typeof ListInstrumentsRequestSchema;
     output: typeof ListInstrumentsResponseSchema;
-  };
-}> = /*@__PURE__*/ serviceDesc(file_gpai_instrument_v1_instrument_service, 0);
+  },
+}> = /*@__PURE__*/
+  serviceDesc(file_gpai_instrument_v1_instrument_service, 0);
+
