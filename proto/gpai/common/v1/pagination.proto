@@ -1,11 +1,12 @@
 syntax = "proto3";
 
 package gpai.common.v1;
+
 option go_package = "github.com/FutureWL/GPAI/gen/go/gpai/common/v1";
 
 message PageRequest {
-  int32 page = 1;       // 1-based
-  int32 page_size = 2;  // 默认 50,上限 500
+  int32 page = 1; // 1-based
+  int32 page_size = 2; // 默认 50,上限 500
 }
 
 message PageResponse {

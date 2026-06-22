@@ -1,9 +1,10 @@
 syntax = "proto3";
 
 package gpai.ingestion.v1;
-option go_package = "github.com/FutureWL/GPAI/gen/go/gpai/ingestion/v1";
 
 import "gpai/ingestion/v1/job.proto";
+
+option go_package = "github.com/FutureWL/GPAI/gen/go/gpai/ingestion/v1";
 
 service IngestionService {
   // 骨架阶段不实现,仅定义
@@ -12,7 +13,13 @@ service IngestionService {
 }
 
 message ListJobsRequest {}
-message ListJobsResponse { repeated IngestionJob jobs = 1; }
+message ListJobsResponse {
+  repeated IngestionJob jobs = 1;
+}
 
-message TriggerJobRequest { int64 job_id = 1; }
-message TriggerJobResponse { int64 run_id = 1; }
+message TriggerJobRequest {
+  int64 job_id = 1;
+}
+message TriggerJobResponse {
+  int64 run_id = 1;
+}

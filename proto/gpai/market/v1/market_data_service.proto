@@ -1,12 +1,13 @@
 syntax = "proto3";
 
 package gpai.market.v1;
-option go_package = "github.com/FutureWL/GPAI/gen/go/gpai/market/v1";
 
-import "gpai/common/v1/types.proto";
 import "gpai/common/v1/pagination.proto";
-import "gpai/market/v1/quote.proto";
+import "gpai/common/v1/types.proto";
 import "gpai/instrument/v1/instrument.proto";
+import "gpai/market/v1/quote.proto";
+
+option go_package = "github.com/FutureWL/GPAI/gen/go/gpai/market/v1";
 
 service MarketDataService {
   rpc GetQuote(GetQuoteRequest) returns (GetQuoteResponse);
@@ -14,11 +15,19 @@ service MarketDataService {
   rpc ListInstruments(ListInstrumentsRequest) returns (ListInstrumentsResponse);
 }
 
-message GetQuoteRequest { string instrument_id = 1; }
-message GetQuoteResponse { Quote quote = 1; }
+message GetQuoteRequest {
+  string instrument_id = 1;
+}
+message GetQuoteResponse {
+  Quote quote = 1;
+}
 
-message UpsertLatestQuoteRequest { Quote quote = 1; }
-message UpsertLatestQuoteResponse { bool accepted = 1; }
+message UpsertLatestQuoteRequest {
+  Quote quote = 1;
+}
+message UpsertLatestQuoteResponse {
+  bool accepted = 1;
+}
 
 message ListInstrumentsRequest {
   common.v1.Market market = 1;

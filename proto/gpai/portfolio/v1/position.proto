@@ -1,17 +1,18 @@
 syntax = "proto3";
 
 package gpai.portfolio.v1;
-option go_package = "github.com/FutureWL/GPAI/gen/go/gpai/portfolio/v1";
 
 import "google/protobuf/timestamp.proto";
 import "gpai/common/v1/types.proto";
+
+option go_package = "github.com/FutureWL/GPAI/gen/go/gpai/portfolio/v1";
 
 message Position {
   string id = 1;
   string portfolio_id = 2;
   string instrument_id = 3;
   int64 quantity = 4;
-  string avg_cost = 5;             // decimal as string
+  string avg_cost = 5; // decimal as string
   google.protobuf.Timestamp opened_at = 6;
   common.v1.Money market_value = 7;
   double unrealized_pnl = 8;

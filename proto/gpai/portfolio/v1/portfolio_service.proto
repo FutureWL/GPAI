@@ -1,10 +1,11 @@
 syntax = "proto3";
 
 package gpai.portfolio.v1;
-option go_package = "github.com/FutureWL/GPAI/gen/go/gpai/portfolio/v1";
 
 import "gpai/portfolio/v1/position.proto";
 import "gpai/portfolio/v1/transaction.proto";
+
+option go_package = "github.com/FutureWL/GPAI/gen/go/gpai/portfolio/v1";
 
 service PortfolioService {
   // 骨架阶段不实现,仅定义
@@ -12,8 +13,16 @@ service PortfolioService {
   rpc RecordTransaction(RecordTransactionRequest) returns (RecordTransactionResponse);
 }
 
-message ListPositionsRequest { string portfolio_id = 1; }
-message ListPositionsResponse { repeated Position positions = 1; }
+message ListPositionsRequest {
+  string portfolio_id = 1;
+}
+message ListPositionsResponse {
+  repeated Position positions = 1;
+}
 
-message RecordTransactionRequest { Transaction transaction = 1; }
-message RecordTransactionResponse { string id = 1; }
+message RecordTransactionRequest {
+  Transaction transaction = 1;
+}
+message RecordTransactionResponse {
+  string id = 1;
+}

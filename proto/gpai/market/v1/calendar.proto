@@ -1,16 +1,17 @@
 syntax = "proto3";
 
 package gpai.market.v1;
+
 option go_package = "github.com/FutureWL/GPAI/gen/go/gpai/market/v1";
 
 message TradingSession {
-  string open = 1;   // "HH:MM" 24h
+  string open = 1; // "HH:MM" 24h
   string close = 2;
 }
 
 message MarketCalendar {
-  uint32 market = 1;     // common.v1.Market 枚举值
-  string date = 2;       // "YYYY-MM-DD"
+  uint32 market = 1; // common.v1.Market 枚举值
+  string date = 2; // "YYYY-MM-DD"
   bool is_trading_day = 3;
   repeated TradingSession sessions = 4;
 }

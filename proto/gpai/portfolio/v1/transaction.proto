@@ -1,9 +1,10 @@
 syntax = "proto3";
 
 package gpai.portfolio.v1;
-option go_package = "github.com/FutureWL/GPAI/gen/go/gpai/portfolio/v1";
 
 import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/FutureWL/GPAI/gen/go/gpai/portfolio/v1";
 
 enum Side {
   SIDE_UNSPECIFIED = 0;
@@ -17,7 +18,7 @@ message Transaction {
   string instrument_id = 3;
   Side side = 4;
   int64 quantity = 5;
-  string price = 6;   // decimal as string
+  string price = 6; // decimal as string
   string fee = 7;
   google.protobuf.Timestamp executed_at = 8;
   string note = 9;

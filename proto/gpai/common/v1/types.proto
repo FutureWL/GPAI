@@ -1,6 +1,7 @@
 syntax = "proto3";
 
 package gpai.common.v1;
+
 option go_package = "github.com/FutureWL/GPAI/gen/go/gpai/common/v1";
 
 enum Market {
@@ -32,6 +33,6 @@ enum Interval {
 }
 
 message Money {
-  int64 amount_minor = 1;  // 最小单位(分/仙/美分)
-  string currency = 2;     // ISO 4217
+  int64 amount_minor = 1; // 最小单位(分/仙/美分)
+  string currency = 2; // ISO 4217
 }

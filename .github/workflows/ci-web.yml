@@ -16,8 +16,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v4
-        with:
-          version: 9
+        # version 从根 package.json 的 packageManager 字段取 (pnpm@9.15.0)
+        # 显式写 version: 9 会触发 "Multiple versions of pnpm specified" 错误
       - uses: actions/setup-node@v4
         with:
           node-version: 20

@@ -1,13 +1,14 @@
 syntax = "proto3";
 
 package gpai.instrument.v1;
-option go_package = "github.com/FutureWL/GPAI/gen/go/gpai/instrument/v1";
 
 import "google/protobuf/timestamp.proto";
 import "gpai/common/v1/types.proto";
 
+option go_package = "github.com/FutureWL/GPAI/gen/go/gpai/instrument/v1";
+
 message Instrument {
-  string id = 1;                  // 内部 ID:"{Market}.{Symbol}.{ExchangeCode}"
+  string id = 1; // 内部 ID:"{Market}.{Symbol}.{ExchangeCode}"
   common.v1.Market market = 2;
   string symbol = 3;
   string exchange_code = 4;

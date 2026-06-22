@@ -1,9 +1,10 @@
 syntax = "proto3";
 
 package gpai.market.v1;
-option go_package = "github.com/FutureWL/GPAI/gen/go/gpai/market/v1";
 
 import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/FutureWL/GPAI/gen/go/gpai/market/v1";
 
 message Quote {
   string instrument_id = 1;

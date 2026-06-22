@@ -1,10 +1,11 @@
 syntax = "proto3";
 
 package gpai.market.v1;
-option go_package = "github.com/FutureWL/GPAI/gen/go/gpai/market/v1";
 
 import "google/protobuf/timestamp.proto";
 import "gpai/common/v1/types.proto";
+
+option go_package = "github.com/FutureWL/GPAI/gen/go/gpai/market/v1";
 
 message OHLCV {
   string instrument_id = 1;
