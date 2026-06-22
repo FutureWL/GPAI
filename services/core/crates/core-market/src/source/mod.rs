@@ -3,8 +3,10 @@ use async_trait::async_trait;
 use gpai_core_common::CoreResult;
 
 pub mod mock;
+pub mod yahoo;
 
 pub use mock::MockSource;
+pub use yahoo::YahooSource;
 
 #[async_trait]
 pub trait DataSource: Send + Sync {
