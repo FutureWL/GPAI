@@ -1,0 +1,34 @@
+[package]
+name = "gpai-core-ingestor"
+version.workspace = true
+edition.workspace = true
+publish = false
+
+[lib]
+path = "src/lib.rs"
+
+[[bin]]
+name = "ingestor"
+path = "src/main.rs"
+
+[dependencies]
+gpai-core-common = { path = "../core-common" }
+gpai-core-market = { path = "../core-market" }
+gpai-proto-gen = { path = "../proto-gen" }
+async-trait.workspace = true
+tokio.workspace = true
+tonic.workspace = true
+prost-types.workspace = true
+chrono.workspace = true
+tracing.workspace = true
+tracing-subscriber.workspace = true
+thiserror.workspace = true
+anyhow.workspace = true
+reqwest = { workspace = true }
+
+[dev-dependencies]
+wiremock = "0.6"
+tokio = { workspace = true, features = ["macros", "rt-multi-thread", "time"] }
+tokio-stream = "0.1"
+serde_json.workspace = true
+gpai-core-market = { path = "../core-market" }

@@ -739,6 +739,28 @@ dependencies = [
 ]
 
 [[package]]
+name = "gpai-core-ingestor"
+version = "0.0.0"
+dependencies = [
+ "anyhow",
+ "async-trait",
+ "chrono",
+ "gpai-core-common",
+ "gpai-core-market",
+ "gpai-proto-gen",
+ "prost-types",
+ "reqwest",
+ "serde_json",
+ "thiserror 1.0.69",
+ "tokio",
+ "tokio-stream",
+ "tonic",
+ "tracing",
+ "tracing-subscriber",
+ "wiremock",
+]
+
+[[package]]
 name = "gpai-core-market"
 version = "0.0.0"
 dependencies = [
