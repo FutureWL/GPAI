@@ -1,0 +1,50 @@
+name: ci-rust
+
+on:
+  pull_request:
+    paths:
+      - "services/core/**"
+      - "proto/**"
+      - "Cargo.toml"
+      - "Cargo.lock"
+  push:
+    branches: [main]
+    paths:
+      - "services/core/**"
+      - "proto/**"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: timescale/timescaledb:latest-pg16
+        env:
+          POSTGRES_USER: gpai
+          POSTGRES_PASSWORD: gpai
+          POSTGRES_DB: gpai
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U gpai"
+          --health-interval 5s --health-timeout 3s --health-retries 10
+    env:
+      DATABASE_URL: postgres://gpai:gpai@localhost:5432/gpai
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@1.86.0
+      - uses: Swatinem/rust-cache@v2
+      - uses: bufbuild/buf-action@v1
+        with:
+          setup_only: true
+      - run: buf generate proto/ --template proto/buf.gen.yaml
+      - run: psql $DATABASE_URL -f db/migrations/0001_init.sql
+      - run: psql $DATABASE_URL -f db/migrations/0002_seed.sql
+      - run: cargo test --workspace --all-features
+      - run: cargo clippy --workspace --all-features -- -D warnings
+      - run: cargo install cargo-bins/cargo-binstall --locked
+      - run: cargo binstall cargo-tarpaulin --locked
+      - run: cargo tarpaulin --workspace --out Xml --output-dir coverage
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rust-coverage
+          path: coverage/

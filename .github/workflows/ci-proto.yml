@@ -1,0 +1,20 @@
+name: ci-proto
+
+on:
+  pull_request:
+    paths: ["proto/**"]
+  push:
+    branches: [main]
+    paths: ["proto/**"]
+
+jobs:
+  lint-and-gen:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: bufbuild/buf-action@v1
+        with:
+          setup_only: true
+      - run: buf lint proto/
+      - run: buf format -d proto/
+      - run: bash scripts/check-proto-consistency.sh

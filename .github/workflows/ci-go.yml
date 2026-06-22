@@ -1,0 +1,31 @@
+name: ci-go
+
+on:
+  pull_request:
+    paths:
+      - "apps/gateway/**"
+      - "gen/go/**"
+      - "go.work"
+      - "proto/**"
+  push:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "1.22"
+      - uses: bufbuild/buf-action@v1
+        with:
+          setup_only: true
+      - run: buf generate proto/ --template proto/buf.gen.go.yaml
+      - run: cd apps/gateway && go mod download
+      - run: cd apps/gateway && go test ./... -coverprofile=coverage.out
+      - run: cd apps/gateway && go vet ./...
+      - uses: actions/upload-artifact@v4
+        with:
+          name: go-coverage
+          path: apps/gateway/coverage.out
