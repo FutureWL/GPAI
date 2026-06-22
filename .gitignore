@@ -78,6 +78,11 @@ services/core/crates/**/proto/
 *.p12
 secrets/
 
+# ----- 运行时残留 (dev-up.sh 的 .pid.* + 本地编译产物) -----
+.pid.*
+apps/gateway/gateway
+apps/gateway/bin/
+
 # ----- IDE / 编辑器 -----
 .vscode/
 !.vscode/settings.json.example
