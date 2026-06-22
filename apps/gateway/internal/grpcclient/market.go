@@ -2,6 +2,7 @@ package grpcclient
 
 import (
 	"context"
+	"strings"
 
 	marketv1 "github.com/FutureWL/GPAI/gen/go/gpai/market/v1"
 	"google.golang.org/grpc"
@@ -15,8 +16,14 @@ type Client struct {
 }
 
 // New dials the given address and returns a Client. The caller must call Close.
+//
+// `addr` accepts both `host:port` (e.g. `127.0.0.1:50051`) and the more
+// explicit `http://host:port` form. gRPC-Go's grpc.NewClient expects
+// `host:port` only — passing `http://...` causes
+// "too many colons in address". Strip the scheme defensively.
 func New(addr string) (*Client, error) {
-	conn, err := grpc.NewClient(addr, grpc.WithTransportCredentials(insecure.NewCredentials()))
+	target := strings.TrimPrefix(strings.TrimPrefix(addr, "http://"), "https://")
+	conn, err := grpc.NewClient(target, grpc.WithTransportCredentials(insecure.NewCredentials()))
 	if err != nil {
 		return nil, err
 	}
