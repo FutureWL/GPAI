@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package gpai.portfolio.v1;
+
+import "gpai/portfolio/v1/position.proto";
+import "gpai/portfolio/v1/transaction.proto";
+
+service PortfolioService {
+  // 骨架阶段不实现,仅定义
+  rpc ListPositions(ListPositionsRequest) returns (ListPositionsResponse);
+  rpc RecordTransaction(RecordTransactionRequest) returns (RecordTransactionResponse);
+}
+
+message ListPositionsRequest { string portfolio_id = 1; }
+message ListPositionsResponse { repeated Position positions = 1; }
+
+message RecordTransactionRequest { Transaction transaction = 1; }
+message RecordTransactionResponse { string id = 1; }

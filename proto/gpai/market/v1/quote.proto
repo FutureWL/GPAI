@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package gpai.market.v1;
+
+import "google/protobuf/timestamp.proto";
+
+message Quote {
+  string instrument_id = 1;
+  double last_price = 2;
+  double open = 3;
+  double high = 4;
+  double low = 5;
+  double prev_close = 6;
+  int64 volume = 7;
+  int64 turnover = 8;
+  double change = 9;
+  double change_pct = 10;
+  google.protobuf.Timestamp ts = 11;
+}

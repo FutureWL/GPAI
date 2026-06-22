@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package gpai.market.v1;
+
+import "google/protobuf/timestamp.proto";
+import "gpai/common/v1/types.proto";
+
+message OHLCV {
+  string instrument_id = 1;
+  common.v1.Interval interval = 2;
+  google.protobuf.Timestamp open_time = 3;
+  double open = 4;
+  double high = 5;
+  double low = 6;
+  double close = 7;
+  int64 volume = 8;
+  int64 turnover = 9;
+}

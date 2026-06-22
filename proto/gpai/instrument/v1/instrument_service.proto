@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package gpai.instrument.v1;
+
+import "gpai/instrument/v1/instrument.proto";
+import "gpai/common/v1/types.proto";
+import "gpai/common/v1/pagination.proto";
+
+service InstrumentService {
+  rpc GetInstrument(GetInstrumentRequest) returns (GetInstrumentResponse);
+  rpc ListInstruments(ListInstrumentsRequest) returns (ListInstrumentsResponse);
+}
+
+message GetInstrumentRequest { string id = 1; }
+message GetInstrumentResponse { Instrument instrument = 1; }
+
+message ListInstrumentsRequest {
+  common.v1.Market market = 1;
+  common.v1.PageRequest page = 2;
+}
+message ListInstrumentsResponse {
+  repeated Instrument instruments = 1;
+  common.v1.PageResponse page = 2;
+}

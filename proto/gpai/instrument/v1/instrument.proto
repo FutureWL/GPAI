@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package gpai.instrument.v1;
+
+import "google/protobuf/timestamp.proto";
+import "gpai/common/v1/types.proto";
+
+message Instrument {
+  string id = 1;                  // 内部 ID:"{Market}.{Symbol}.{ExchangeCode}"
+  common.v1.Market market = 2;
+  string symbol = 3;
+  string exchange_code = 4;
+  string name_zh = 5;
+  string name_en = 6;
+  common.v1.AssetClass asset_class = 7;
+  string currency = 8;
+  string timezone = 9;
+  int32 lot_size = 10;
+  bool delisted = 11;
+  google.protobuf.Timestamp listed_at = 12;
+}

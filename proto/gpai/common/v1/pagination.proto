@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package gpai.common.v1;
+
+message PageRequest {
+  int32 page = 1;       // 1-based
+  int32 page_size = 2;  // 默认 50,上限 500
+}
+
+message PageResponse {
+  int32 total = 1;
+  int32 page = 2;
+  int32 page_size = 3;
+}

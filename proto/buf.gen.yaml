@@ -1,0 +1,21 @@
+version: v2
+inputs:
+  - directory: gpai
+plugins:
+  - local: protoc-gen-es
+    out: gen/ts/es
+    opt:
+      - target=ts
+      - import_extension=ts
+  - local: protoc-gen-connect-es
+    out: gen/ts/connect-es
+    opt:
+      - target=ts
+      - import_extension=ts
+  - local: protoc-gen-ts_proto
+    out: gen/ts/ts-proto
+    opt:
+      - outputServices=generic-definitions
+      - outputClientImpl=false
+      - useExactTypes=false
+      - esModuleInterop=true

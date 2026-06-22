@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package gpai.ingestion.v1;
+
+import "gpai/ingestion/v1/job.proto";
+
+service IngestionService {
+  // 骨架阶段不实现,仅定义
+  rpc ListJobs(ListJobsRequest) returns (ListJobsResponse);
+  rpc TriggerJob(TriggerJobRequest) returns (TriggerJobResponse);
+}
+
+message ListJobsRequest {}
+message ListJobsResponse { repeated IngestionJob jobs = 1; }
+
+message TriggerJobRequest { int64 job_id = 1; }
+message TriggerJobResponse { int64 run_id = 1; }

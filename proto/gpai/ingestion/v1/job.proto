@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package gpai.ingestion.v1;
+
+import "google/protobuf/timestamp.proto";
+import "gpai/common/v1/types.proto";
+
+message IngestionJob {
+  int64 id = 1;
+  string source_id = 2;
+  common.v1.Market market = 3;
+  string instrument_id = 4;     // 空 = 全市场
+  string schedule = 5;          // cron
+  bool enabled = 6;
+  google.protobuf.Timestamp last_run_at = 7;
+  int32 last_status = 8;
+}
