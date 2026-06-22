@@ -76,7 +76,11 @@ importers:
         specifier: ^2.1.0
         version: 2.1.9(@types/node@22.20.0)
 
-  gen/ts: {}
+  gen/ts:
+    dependencies:
+      '@bufbuild/protobuf':
+        specifier: ^2.2.0
+        version: 2.12.0
 
   packages/config-eslint:
     dependencies:
@@ -100,6 +104,9 @@ packages:
   '@alloc/quick-lru@5.2.0':
     resolution: {integrity: sha512-UrcABB+4bUrFABwbluTIBErXwvbsU/V7TZWfmbgJfbkwiBuziS9gxdODUyuiecfdGQ85jglMW6juS3+z5TsKLw==}
     engines: {node: '>=10'}
+
+  '@bufbuild/protobuf@2.12.0':
+    resolution: {integrity: sha512-B/XlCaFIP8LOwzo+bz5uFzATYokcwCKQcghqnlfwSmM5eX/qTkvDBnDPs+gXtX/RyjxJ4DRikECcPJbyALA8FA==}
 
   '@emnapi/runtime@1.11.1':
     resolution: {integrity: sha512-vgj7R3y3Wgx24IQaGPA/R6YFXLHVMOZ0uVEyIQPaWs+rd1AzfEMXlAC22FYwO1XkKR6NPsq7mUandH8oIRdZFw==}
@@ -1680,6 +1687,8 @@ packages:
 snapshots:
 
   '@alloc/quick-lru@5.2.0': {}
+
+  '@bufbuild/protobuf@2.12.0': {}
 
   '@emnapi/runtime@1.11.1':
     dependencies:
