@@ -1,0 +1,119 @@
+# =============================================================================
+# GPAI — production compose
+#
+# Seven services:
+#   postgres, redis        — stateful infra
+#   core, ingestor         — share the gpai/core image, different ENTRYPOINTs
+#   gateway, web           — public-facing apps
+#   migrate                — one-shot DB migrator (run via
+#                            `docker compose run --rm migrate`)
+#
+# The `migrate` service replaces the brief's broken step 5 (which used
+# `docker compose exec -T core sh -c '...'` — that just sets an env var
+# and exits, it does not run any SQL). We use the timescaledb image
+# directly because `psql` ships with it and the init SQL was written
+# against Postgres 16.
+#
+# Bring-up: `deploy/install.sh`
+# Tear-down: `docker compose -f deploy/docker-compose.yml down -v`
+# =============================================================================
+
+name: gpai
+
+services:
+  postgres:
+    image: timescale/timescaledb:latest-pg16
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: gpai
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD in .env}
+      POSTGRES_DB: gpai
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U gpai -d gpai"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+  redis:
+    image: redis:7-alpine
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  core:
+    image: gpai/core:latest
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgres://gpai:${POSTGRES_PASSWORD}@postgres:5432/gpai
+      REDIS_URL: redis://redis:6379
+      MARKET_ADDR: 0.0.0.0:50051
+      RUST_LOG: ${RUST_LOG:-info}
+    command: ["/usr/local/bin/market-server"]
+
+  ingestor:
+    image: gpai/core:latest
+    restart: unless-stopped
+    depends_on:
+      core:
+        condition: service_started
+    environment:
+      MARKET_GRPC_ADDR: http://core:50051
+      INGESTOR_POLL_SECS: ${INGESTOR_POLL_SECS:-30}
+      INGESTOR_INSTRUMENTS: ${INGESTOR_INSTRUMENTS:-US.AAPL.NASDAQ}
+      RUST_LOG: ${RUST_LOG:-info}
+    command: ["/usr/local/bin/ingestor"]
+
+  gateway:
+    image: gpai/gateway:latest
+    restart: unless-stopped
+    depends_on:
+      core:
+        condition: service_started
+    environment:
+      MARKET_GRPC_ADDR: http://core:50051
+      GATEWAY_PORT: "8080"
+    ports:
+      - "8080:8080"
+
+  web:
+    image: gpai/web:latest
+    restart: unless-stopped
+    depends_on:
+      gateway:
+        condition: service_started
+    environment:
+      GATEWAY_URL: http://gateway:8080
+      NEXT_PUBLIC_GATEWAY_URL: http://gateway:8080
+    ports:
+      - "3000:3000"
+
+  # One-shot DB migrator. Uses the timescale image so psql is available,
+  # and reads SQL files from db/migrations/ mounted read-only. Run via:
+  #   docker compose -f deploy/docker-compose.yml run --rm migrate
+  # install.sh invokes this for every /migrations/*.sql file in order.
+  migrate:
+    image: timescale/timescaledb:latest-pg16
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      PGPASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - ../db/migrations:/migrations:ro
+    entrypoint: ["psql"]
+    # `command` is overridden per-invocation by `docker compose run`.
+    command: ["--version"]
+
+volumes:
+  pgdata:
